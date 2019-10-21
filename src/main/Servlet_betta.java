@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
+
 //import service.Buffer;
 //import service.Hamma;
 //import service.Sample;
@@ -25,55 +28,24 @@ public class Servlet_betta extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 //=========================================================================================	
-		String web_text = request.getParameter("comment") + " ";//плюс пробел - временный костыль
-			
-//			String name = request.getParameter("name");
-//			String number = request.getParameter("number");
-//			String logic = request.getParameter("logic");
-//			String retoric = request.getParameter("retoric");
-//			String text_structure = request.getParameter("text_structure");
-/*			
-		if(logic != null) {lg = true;} else {lg = false;}
-	
-		//Samplable sample = new Sample();
-//if-version_one
-		if(name != null) {sample.set_name(true);} else {sample.set_name(false);}
-		if(number != null) {sample.set_number(true);} else {sample.set_number(false);}
-		if(logic != null) {sample.set_logic(true);} else {sample.set_logic(false);}
-//if-version_two
-		sample.set_retoric((retoric != null) ? true : false);
-		sample.set_text_structure((text_structure != null) ? true : false);
+		String web_text = request.getParameter("statement") + " ";//плюс пробел - временный костыль
 		
-		sample.set_text(web_text);
+		Frame_day day = new Day();
+		Sortable sort_day = new Sort_day();   
+		  
+		Recognize recognize = new Recognize(web_text, day);		 
+		Deep_Recognize deep = new Deep_Recognize(day, sort_day);
 		
-		Sample.sample = this.sample;//only for jsp-page
-		
-*/		
-//		System.out.println(web_text);
-//		
-//		System.out.println(name);
-//		System.out.println(number);
-//		System.out.println(logic);
-//		System.out.println(retoric);
-//		System.out.println(text_structure);
-//		
-//		System.out.println("lg: " + lg);
-//		
-//	//-----------------------------------------
-		System.out.println("++++++++++++++++++++++++++++++++++++");
-//		System.out.println("1" + sample.get_name());
-//		System.out.println("2" + sample.get_number());
-//		System.out.println("3" + sample.get_logic());
-//		System.out.println("4" + sample.get_retoric());
-//		System.out.println("5" + sample.get_text_structure());
-//		new Hamma(sample);
-//		
-////==========================================================================================
-//		
 		System.out.println(web_text);
 		Buffer.text = web_text;
+		Buffer.date = day.get_date();
+		Buffer.begin_cash = day.get_begin_cash();
+		
 		//!!!
 		response.sendRedirect("index.jsp");
+		System.out.println(day.get_date());
+		
+		new Json_history( day, sort_day);
 		
 //for consol desing
 		System.out.println("======================================");

@@ -51,9 +51,18 @@ background: green;
             </div>
             <! modul_one>
             
-            <div style="color: black; width: 77%; height: 65%; background: #B4C2CA; font-family: Roman; border: solid 1px black;  float: left">
-                <p>&nbsp date: -- -- ----</p>
-                <p> </p>
+            <div style="color: black; width: 77%; height: 65%; background: #c3ced5; font-family: Roman; border: solid 1px black;  float: left">
+                 &nbsp date: <%out.println(" " + Buffer.date);%>
+                <br>&nbsp begin cash: <%out.println(" " + Buffer.begin_cash);%>
+                <br>&nbsp end cash: --- ---
+                <br>&nbsp total value of deals: ---
+                
+                <p>&nbsp result income: ---
+                <br>&nbsp result payment: ---
+                
+                <p>&nbsp online income: from sber = ---; from tinkoff = ---; from po4ta-bank = ---
+                <br>&nbsp income from nicom: ---
+                
                 <p>&nbsp print ---</p>
                 <p>&nbsp copy ---</p>
                 <p>&nbsp foto ---</p>
@@ -63,12 +72,12 @@ background: green;
 	&nbsp<%out.println("text_area: " + Buffer.text + "   <===");%>
 	<br>
                 
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
+                
+               
+                <br>online
+                 <br>online
+                  <br>online
+           
             </div>
 <! modul_two>
             
@@ -76,7 +85,7 @@ background: green;
             
             
             <div style="color: white; width: 22%; min-height: 400 px; background: #1C6956; font-family: Roman; border: solid 1px black; float: right">
-            <p align="center"><textarea  style= "background-color: #ffe; color: #930; width: 70%; height: 500 px" rows="21" cols="95" name= "comment"></textarea>
+            <p align="center"><textarea  style= "background-color: #ffe; color: #930; width: 70%; height: 500 px" rows="21" cols="95" name= "statement"></textarea>
             
             </p>
                  
@@ -92,12 +101,13 @@ background: green;
               
             </div>
             
-            <div style="color: black; width: 100%; height: 25%; background: #B0CACD; font-family: Roman; border: solid 1px black;  float: left">
-                <p>date: -- -- ----</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                
+            <div style="color: black; width: 100%; height: 25%; background: #96aab6; font-family: Roman; border: solid 1px black;  float: left">
+                 
+                <br>&nbsp date <input type="text" size="10">&nbsp &nbsp<input type="text" size="10">
+                 <p>&nbsp use only today data&nbsp<input name="name" type="checkbox" value="true" ></p>
+                 <p>&nbsp displays only nicome &nbsp<input name="name" type="checkbox" value="true" ></p>
+                 <p>&nbsp displays only online income &nbsp<input name="name" type="checkbox" value="true" ></p>
+                 
             </div>
        
 </body>
