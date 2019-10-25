@@ -3,7 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sort_day <Ge> implements Sortable {
+public class Sort_day  <Ge> implements Sortable {
 	
 	int income, payment, sber, nicom, pults, copy, print,
 	nicom_minus, pults_minus, baget_minus, fotolab_minus, foto;
@@ -117,7 +117,10 @@ public class Sort_day <Ge> implements Sortable {
 			return this.pults;
 		}
 
-		
+		public  void set_foto(int foto) {
+			this.foto = foto;
+			
+		}
 
 		
 		public  int get_foto() {
@@ -186,10 +189,6 @@ public class Sort_day <Ge> implements Sortable {
 			return this.fotolab_minus;
 		}
 
-		public  void set_foto(int foto) {
-			this.foto = foto;
-			
-		}
 //==============generic stage=====================
 		
 		public Ge get_list_foto() {

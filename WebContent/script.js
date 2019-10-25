@@ -1,50 +1,43 @@
 
-var a = "hello India";
-var int = 0;
-function my_f(){
-    document.getElementById('mybutton');
-    alert(a);
-    console.log("hello consol");
+function press_button(){                                        //method post
+    document.getElementById('main_button');
+    console.log(".. from press_button");
+    var web_text = document.getElementById('web_text_area').value;
+    console.log(web_text);
+    
+    var xhr = new XMLHttpRequest();
+    
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                var data = xhr.responseText;
+                var Obj = JSON.parse(data);
+                document.getElementById("monitor").firstChild.nodeValue = " date: " + Obj.date;
+                var omega = document.getElementById("monitor");
+                omega.innerHTML = " &nbsp date: " + Obj.date + "<br>&nbsp begin_cash: " + Obj.begin_cash + 
+                "<br>&nbsp end_cash: " + Obj.end_cash +
+                "<br>&nbsp total_value_of_deals: ---" + 
+                "<br>&nbsp result income: " + Obj.income +
+                "<br>&nbsp result payment: " + Obj.payment +
+                "<p>&nbsp (+Plus+)<br>&nbsp online_income: " + Obj.sber +
+                "<br>&nbsp income from nicom: " + Obj.nicom +
+                "<br>&nbsp income from pults: " + Obj.pults +
+                "<br>&nbsp фнд: " + Obj.foto +
+                "<br>&nbsp копия: " + Obj.copy +
+                "<br>&nbsp печать: " + Obj.print +
+                "<br>&nbsp other: " + (Obj.income - Obj.foto - Obj.copy - Obj.print - Obj.pults - Obj.nicom) +
+                "<br>&nbsp total**: " + (Obj.income - Obj.pults - Obj.nicom) +
+                "<p>&nbsp (-Minus-)<br>&nbsp payment for nicom: -" + Obj.nicom_minus +
+                "<br>&nbsp payment for pults: -" + Obj.pults_minus +
+                "<br>&nbsp payment for baget: -" + Obj.baget_minus +
+                "<br>&nbsp payment for fotolab: -" + Obj.fotolab_minus +
+                "<br>&nbsp other: -" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
+                "<p>&nbsp salary: " + Obj.salary; 
+                
+    
             }
-function method_one(){
-    
-    document.getElementById('button');
-    console.log("called method_one");
-    
-    var text1 = document.getElementById('myTextArea').value;
-    console.log(parseInt(text1) + 100);
-    var c = parseInt(text1);
-    var obj = document.getElementById("image");
-    var element = document.getElementById("image").hspace; 
-    var element1 = document.getElementById("image").alt;
-    obj.hspace = c+100;
-//  element.setAttribute("hspace", 5); 
-//console.log("i am c" + c);
-    console.log(obj);
-    int = c;
-    if(int==0){
-    obj.setAttribute('src', 'su28.jpg');
-        
-        var omega = document.getElementById("tab");
-        console.log(omega);
-    omega.innerHTML = '';
-       }
-    
-    if(int==1){
-    obj.setAttribute('src', 'su27.jpg');
-    
-    var omega = document.getElementById("tab");
-        console.log(omega);
-    omega.innerHTML = '<p>hear must be the table</p><p>hear must be the table</p>';
-    
-       }
-    
-}
+        }
+        xhr.open('POST', 'Servlet_betta', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("name="+web_text);
 
-function get_number(){
-
-
-  var element = document.getElementById("image").ATTRIBUTE_NODE; 
-//  element.setAttribute("hspace", 5); 
-consol.log(element);
-}
+            }
