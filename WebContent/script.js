@@ -13,12 +13,73 @@ function press_button(){                                        //method post
                 var Obj = JSON.parse(data);
                 document.getElementById("monitor").firstChild.nodeValue = " date: " + Obj.date;
                 var omega = document.getElementById("monitor");
-                omega.innerHTML = " &nbsp date: " + Obj.date + "<br>&nbsp begin_cash: " + Obj.begin_cash + 
-                "<br>&nbsp end_cash: " + Obj.end_cash +
+                
+                omega.innerHTML =   
+                "<table style=\"border: 0px solid black; width: 30%\">" +
+                "<tr><td>&nbsp date: " + Obj.date +
+                "<br>&nbsp begin_cash: " +
+                "<br>&nbsp end_cash: " +
+                "<br>&nbsp total_value_of_deals: " +
+                "<br>&nbsp result income: " +
+                "<br>&nbsp result payment: " +
+                "<p>&nbsp (+Plus+)<br>&nbsp online_income: from sber: " +
+                "<br>&nbsp income from nicom: " +
+                "<br>&nbsp income from pults: " +
+                "<br>&nbsp фнд: " + 
+                "<br>&nbsp копия: " + 
+                "<br>&nbsp печать: " + 
+                "<br>&nbsp other: " + 
+                "<br>&nbsp total**: " +
+                "<p>&nbsp (-Minus-)<br>&nbsp payment for nicom: " +
+                "<br>&nbsp payment for pults: " +
+                "<br>&nbsp payment for baget: " +
+                "<br>&nbsp payment for fotolab: " +
+                "<br>&nbsp other: " +
+                "<br>&nbsp salary: " + Obj.salary +
+                "</td>" + 
+                
+                "<td>" + 
+                "<br>" + Obj.begin_cash + "<br>" + Obj.end_cash +
+                "<br>&nbsp-//-" +
+                "<br>" + Obj.income +
+                "<br>" + Obj.payment +
+                "<p>" + 
+                "<br>" + Obj.sber +
+                "<br>" + Obj.nicom +
+                "<br>" + Obj.pults +
+                "<br>" + Obj.foto +
+                "<br>" + Obj.copy +
+                "<br>" + Obj.print +
+                "<br>" + (Obj.income - Obj.foto - Obj.copy - Obj.print - Obj.pults - Obj.nicom) +
+                "<br>" + (Obj.income - Obj.pults - Obj.nicom) +
+                "<p>" +
+                "<br>-" + Obj.nicom_minus +
+                "<br>-" + Obj.pults_minus +
+                "<br>-" + Obj.baget_minus +
+                "<br>-" + Obj.fotolab_minus +
+                "<br>-" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
+                "<br>&nbsp" + 
+                "</td></tr></table>"
+                
+            }
+        }
+        xhr.open('POST', 'Servlet_betta', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("facture="+web_text);
+
+            }
+/*some variant of output
+  				omega.innerHTML = " &nbsp date: " + Obj.date + 
+                "<table style=\"border: 1px solid black; width: 30%\">" +
+                "<tr><td>&nbsp begin_cash: " +
+                "<br>&nbsp end_cash: </td>" + 
+                
+                "<td>" + Obj.begin_cash + "<br>" + Obj.end_cash + "</td></tr></table>" + 
+                //"<br>&nbsp end_cash: " + Obj.end_cash +
                 "<br>&nbsp total_value_of_deals: ---" + 
                 "<br>&nbsp result income: " + Obj.income +
                 "<br>&nbsp result payment: " + Obj.payment +
-                "<p>&nbsp (+Plus+)<br>&nbsp online_income: " + Obj.sber +
+                "<p>&nbsp (+Plus+)<br>&nbsp online_income: from sber: " + Obj.sber + "&nbsp from tinkoff: -//-" +
                 "<br>&nbsp income from nicom: " + Obj.nicom +
                 "<br>&nbsp income from pults: " + Obj.pults +
                 "<br>&nbsp фнд: " + Obj.foto +
@@ -33,11 +94,4 @@ function press_button(){                                        //method post
                 "<br>&nbsp other: -" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
                 "<p>&nbsp salary: " + Obj.salary; 
                 
-    
-            }
-        }
-        xhr.open('POST', 'Servlet_betta', true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("name="+web_text);
-
-            }
+ */

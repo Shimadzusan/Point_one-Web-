@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Day implements Frame_day, Facturable{
-	 String date;
-	 
-	 	List<String> facture;
-		int begin_cash;
-		int end_cash;
-		int salary;
+	String date; 
+	List<String> facture;
+	int begin_cash;
+	int end_cash;
+	int salary;
 		
 		Day() {
 			facture = new ArrayList();

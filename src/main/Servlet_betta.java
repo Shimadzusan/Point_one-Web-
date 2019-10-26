@@ -22,48 +22,36 @@ public class Servlet_betta extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 
-		String web_text = request.getParameter("name");
+		String web_text = request.getParameter("facture"); //change on facture!
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		
 		Frame_day day = new Day();
-		Sortable sort_day = new Sort_day();   
-		  
+		Sortable sort_day = new Sort_day();    
 		Recognize recognize = new Recognize(web_text, day);		 
 		Deep_Recognize deep = new Deep_Recognize(day, sort_day);
 		
 //..new approach by Yong: object of sort_day --convert--> to json
 		Gson json = new Gson();
 		String json_day = json.toJson(day);
-		String json_sort_day = json.toJson(sort_day);
-		
+		String json_sort_day = json.toJson(sort_day);	
 //..end
 		String to_jscript = concatJson(json_day, json_sort_day);
-		
 		response.getWriter().write(to_jscript);
-//		System.out.println(to_jscript);
-//		Buffer.text = web_text;
-//		Buffer.date = day.get_date();
-//		Buffer.begin_cash = day.get_begin_cash();
-//		
-//		//!!!
-//		response.sendRedirect("index.jsp");
-//		System.out.println(day.get_date());
-//		
-//		new Json_history( day, sort_day);
+
+		new Json_history( day, sort_day);
 		
 //for consol desing
-		
 		System.out.println("======================================");
 		System.out.println();
-		
 	}
 
 	private String concatJson(String json_one, String json_two) {
 		String result = json_one.substring(0, json_one.length() - 1) + "," 
 		+ json_two.substring(1, json_two.length());
-		return result;
+		
+	return result;
 	}
 
 }

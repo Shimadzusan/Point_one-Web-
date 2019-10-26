@@ -7,6 +7,20 @@
     </head>
     
     <body bgcolor = #d4dee4>
+       <style>
+                table, th, td {
+  border: 0px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+table#t01 {
+  width: 100%;    
+  background-color: #f1f1c1;
+}
+</style>
        
         <div id="object_button">
             <a href  = 'index.html' style="color: white">Главная страница</a>
@@ -25,18 +39,15 @@
 <! modul_one: monitor>
             
         <div id="monitor" style="color: black; width: 77%; height: 67%; background: #B4C2CA; font-family: Roman; border: solid 1px black;  float: left">
-            <p>&nbsp date: -- -- ----</p>
-            <p> </p>
-            <p>&nbsp print ---</p>
-            <p>&nbsp copy ---</p>
-            <p>&nbsp foto ---</p>
+            <p>&nbsp &nbsp &nbsp Welcome..</p>
+           
         </div>
 <! modul_two: input data>
             
         <script type="text/javascript" charset="UTF-8"src="script.js"></script>
             
         <div style="color: white; width: 22%; height: 67%; background: #1C6956; font-family: Roman; border: solid 1px black; float: right">
-            <p align="center"><textarea  id = "web_text_area" style= "background-color: #ffe; color: #930; name: comment; cols: 100; rows: 65; width: 75%; height: 80%"></textarea></p>
+            <p align="center"><textarea  id = "web_text_area" style= "background-color: #ffe; color: #930; name: comment; cols: 100; rows: 68; width: 85%; height: 85%"></textarea></p>
             <p align="center"><input  onclick="press_button()" id="main_button" type = "submit" value = "Отправить текст"></p>
         </div>
                  
@@ -46,7 +57,23 @@
         </div>
             
         <div style="color: black; width: 100%; height: 23%; background: #96aab6; font-family: Roman; border: solid 1px black;  float: left">
-                <p>date: -- -- ----</p>
+                <br>&nbsp date <input type="text" size="10">&nbsp &nbsp<input type="text" size="10">
+                &nbsp use only today data&nbsp<input name="name" type="checkbox" value="true" >
+        	<table style="width:20%">
+        	 <tr>
+    <td>&nbsp displays only nicom &nbsp
+    <br>&nbsp displays only pults &nbsp
+    <br>&nbsp displays only baget &nbsp
+    <br>&nbsp displays only online income &nbsp
+    </td>
+    <td><input name="name" type="checkbox" value="true" >
+    <br><input name="name" type="checkbox" value="true" >
+    <br><input name="name" type="checkbox" value="true" >
+    <br><input name="name" type="checkbox" value="true" >
+    </td>
+   
+  </tr>
+            </table> 
                 
         </div>
         

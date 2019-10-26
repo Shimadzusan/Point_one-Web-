@@ -1,0 +1,11 @@
+for tomcat:
+login: superadmin
+pass: pass
+***
+for WAR-file charset must be "cp1251"
+all text-files also charset "cp1251"
+os: win7
+//***//
+for IDE Eclipse
+charset "utf-8"
+all text-files also charset "utf-8"

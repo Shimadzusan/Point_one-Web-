@@ -1,6 +1,6 @@
 package main;
 
 public class Head {
-	public String charset = "utf-8";	//cp1251
+	public String charset = "cp1251";	//cp1251 or utf-8
 
 }

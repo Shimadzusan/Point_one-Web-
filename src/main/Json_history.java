@@ -6,32 +6,27 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-
 public class Json_history extends Head {
-	//input: sort_day and day --> output: json history(history.txt)
-		Sortable sort_day;
-		Frame_day day;
-		String address = "C:\\1.txt";
+//.. input: sort_day and day --> output: json history(history.txt)
+	Sortable sort_day;
+	Frame_day day;
+	String address = "C:\\1.txt";
 		
-		public Json_history(Frame_day day,Sortable sort_day) throws IOException {
-			this.day = day;
-			this.sort_day = sort_day;
-			
+	public Json_history(Frame_day day,Sortable sort_day) throws IOException {
+		this.day = day;
+		this.sort_day = sort_day;	
 			commit_report();
-			
 			System.out.println("json(for history) article added");
 			delete_last_note();
-		}
+	}
 
-		private void commit_report() throws IOException {
-			FileInputStream fin = new FileInputStream(address);
+	private void commit_report() throws IOException {
+		FileInputStream fin = new FileInputStream(address);
 			
 			byte[] buffer = new byte[fin.available()];
 		        fin.read(buffer, 0, buffer.length);
 		        	String s = removeLastChar(new String(buffer, charset));
-		        		//System.out.println(s.length());
-		        			fin.close();
+		        		fin.close();
 		        			
 		FileOutputStream fos = new FileOutputStream(address);
 		      //String s2 = "дата" + "\t" + "фнд" + "\t" + "печать" + "\t" + "копия" + "\t" + "другое" + "\t" + "итого" + "\r\n";  			
@@ -47,12 +42,12 @@ public class Json_history extends Head {
 		        	fos.write(buffer2, 0, buffer2.length);
 		
 		        	fos.close();
-		}
-		private String removeLastChar(String str) {
-		    return str.substring(0, str.length() - 1);
-		}
+	}
+	private String removeLastChar(String str) {
+		   return str.substring(0, str.length() - 1);
+	}
 		
-		public void delete_last_note() throws IOException {
-new Saga();
-		}
+	public void delete_last_note() throws IOException {
+		new Saga();
+	}
 }
