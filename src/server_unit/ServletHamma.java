@@ -1,4 +1,4 @@
-package main;
+package server_unit;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import beans_unit.*;
+import recognition_and_initialization_unit.*;
 
-@WebServlet("/Servlet_betta")
-public class Servlet_betta extends HttpServlet {
+
+@WebServlet("/ServletHamma")
+public class ServletHamma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-		public Servlet_betta() {
+		public ServletHamma() {
 			super();
 	    }
 	
@@ -27,10 +30,10 @@ public class Servlet_betta extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		
-		Frame_day day = new Day();
-		Sortable sort_day = new Sort_day();    
-		Recognize recognize = new Recognize(web_text, day);		 
-		Deep_Recognize deep = new Deep_Recognize(day, sort_day);
+		Day day = new Day();
+		SortDay sort_day = new SortDay();    
+		new Recognize(web_text, day);		 
+		new DeepRecognize(day, sort_day);
 		
 //..new approach by Yong: object of sort_day --convert--> to json
 		Gson json = new Gson();
@@ -40,7 +43,7 @@ public class Servlet_betta extends HttpServlet {
 		String to_jscript = concatJson(json_day, json_sort_day);
 		response.getWriter().write(to_jscript);
 
-		new Json_history( day, sort_day);
+		//new Json_history( day, sort_day);
 		
 //for consol desing
 		System.out.println("======================================");

@@ -14,7 +14,7 @@ public class Day implements FrameDay {
 	int end_cash;
 	int salary;
 		
-	Day() {
+	public Day() {
 		facture = new ArrayList();
 	}
 	    

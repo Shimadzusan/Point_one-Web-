@@ -3,8 +3,10 @@ package test;
 import static org.junit.Assert.*;
 import java.io.IOException;
 import org.junit.Test;
+
 import beans_unit.Day;
-import recognition_and_initialization_unit.*;
+import recognition_and_initialization_unit.Head;
+import recognition_and_initialization_unit.Recognize;
 
 public class RecognizeTest extends Head {
 

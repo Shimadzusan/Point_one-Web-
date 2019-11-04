@@ -63,7 +63,7 @@ function press_button(){                                        //method post
                 
             }
         }
-        xhr.open('POST', 'Servlet_betta', true);
+        xhr.open('POST', 'ServletHamma', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("facture="+web_text);
 

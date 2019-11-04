@@ -14,6 +14,6 @@ public interface FrameDay extends Facturable{
     public void setFacture(String list);
     //public List<String> getFacture();
     
-    public void setSalary(int salary);
-    public int getSalary();
+//    public void setSalary(int salary);
+//    public int getSalary();
 }

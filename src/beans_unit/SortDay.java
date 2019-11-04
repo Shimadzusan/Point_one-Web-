@@ -23,7 +23,7 @@ public class SortDay <Ge> implements Sortable {
 //		
 //	}
 //==========================================================
-	SortDay() {
+	public SortDay() {
 		ArrayList<String> foto = new ArrayList<String>();
 		foto.add("0");
 		this.list_foto = (Ge) foto;
@@ -60,7 +60,6 @@ public class SortDay <Ge> implements Sortable {
 		other.add("0");
 		this.list_other = (Ge) other;
 		
-		
 		ArrayList<String> card_data = new ArrayList<String>();
 		card_data.add("0");
 		this.list_card_data = (Ge) card_data;
@@ -70,217 +69,182 @@ public class SortDay <Ge> implements Sortable {
 		return null;
 	}
 	
-	 	public void set_income(int income) {
-	        this.income = income;
-	    }
+	public void setIncome(int income) {
+		this.income = income;
+	}
 	    
-	    public int get_income() {
-	        return this.income;
-	    }
+	public int getIncome() {
+		return this.income;
+	}
 	    
-	    public void set_payment(int payment) {
-	        this.payment = payment;
-	    }
+	public void setPayment(int payment) {
+		this.payment = payment;
+	}
 	    
-	    public int get_payment() {
-	        return this.payment;
-	    }
+	public int getPayment() {
+		return this.payment;
+	}
+		
+	public void setSber(int sber) {
+		this.sber = sber;
+	}
 
+	public int getSber() {
+		return this.sber;
+	}
 		
-		public void set_sber(int sber) {
-			this.sber = sber;
-		}
+	public void setNicom(int nicom) {
+		this.nicom = nicom;	
+	}
+	
+	public int getNicom() {
+		return this.nicom;
+	}
+		
+	public void setPults(int pults) {
+		this.pults = pults;
+	}
+		
+	public int getPults() {
+		return this.pults;
+	}
 
-		public int get_sber() {
-			return this.sber;
-		}
-
+	public  void setFoto(int foto) {
+		this.foto = foto;	
+	}
 		
-		public void set_nicom(int nicom) {
-			this.nicom = nicom;
-			
-		}
-
+	public  int getFoto() {
+		return this.foto;
+	}
+	
+	public void setCopy(int copy) {
+		this.copy = copy;
+	}
+	
+	public int getCopy() {
+		return this.copy;
+	}
 		
-		public int get_nicom() {
-			return this.nicom;
-		}
-
+	public void setPrint(int print) {
+		this.print = print;
+	}
 		
-		public void set_pults(int pults) {
-			this.pults = pults;
-		}
-
+	public int getPrint() {
+		return this.print;
+	}
 		
-		public int get_pults() {
-			return this.pults;
-		}
-
-		public  void set_foto(int foto) {
-			this.foto = foto;
-			
-		}
-
-		
-		public  int get_foto() {
-			return this.foto;
-		}
-
-		
-		public void set_copy(int copy) {
-			this.copy = copy;
-		}
-
-		
-		public int get_copy() {
-			return this.copy;
-		}
-
-		
-		public void set_print(int print) {
-			this.print = print;
-		}
-
-		
-		public int get_print() {
-			return this.print;
-		}
-		
-//=====minus=====
-		
-		
-		public void set_nicom_minus(int nicom_minus) {
+//minus	
+	public void setNicomMinus(int nicom_minus) {
 		this.nicom_minus = nicom_minus;	
-		}
-
+	}
 		
-		public int get_nicom_minus() {
-			return this.nicom_minus;
-		}
-
+	public int getNicomMinus() {
+		return this.nicom_minus;
+	}
 		
-		public void set_pults_minus(int pults_minus) {
-			this.pults_minus = pults_minus;
-		}
-
+	public void setPultsMinus(int pults_minus) {
+		this.pults_minus = pults_minus;
+	}
 		
-		public int get_pults_minus() {
-			return this.pults_minus;
-		}
-
+	public int getPultsMinus() {
+		return this.pults_minus;
+	}
 		
-		public void set_baget_minus(int baget_minus) {
-			this.baget_minus = baget_minus;
-		}
-
+	public void setBagetMinus(int baget_minus) {
+		this.baget_minus = baget_minus;
+	}
 		
-		public int get_baget_minus() {
-			return this.baget_minus;
-		}
-
+	public int getBagetMinus() {
+		return this.baget_minus;
+	}
 		
-		public void set_fotolab_minus(int fotolab_minus) {
-			this.fotolab_minus = fotolab_minus;
-		}
+	public void setFotolabMinus(int fotolab_minus) {
+		this.fotolab_minus = fotolab_minus;
+	}
 
-		
-		public int get_fotolab_minus() {
-			return this.fotolab_minus;
-		}
+	public int getFotolabMinus() {
+		return this.fotolab_minus;
+	}
 
-//==============generic stage=====================
-		
-		public Ge get_list_foto() {
-			return this.list_foto;
-		}
+//generic stage	
+	public Ge getListFoto() {
+		return this.list_foto;
+	}
 
+	public void setListFoto(Object list_foto) {
+		this.list_foto = (Ge) list_foto;		
+	}
 		
-		public void set_list_foto(Object list_foto) {
-			this.list_foto = (Ge) list_foto;
+	public void setListCopy(Object list_copy) {
+		this.list_copy = (Ge) list_copy;
+	}
+		
+	public Ge getListCopy() {
+		return this.list_copy;
+	}
+		
+	public void setListPrint(Object list_print) {
+		this.list_print = (Ge) list_print;
+	}
+		
+	public Ge getListPrint() {
+		return this.list_print;
+	}
 			
-		}
-
+	public void setListBaget(Object list_baget) {
+		this.list_baget = (Ge) list_baget;	
+	}
 		
-		public void set_list_copy(Object list_copy) {
-			this.list_copy = (Ge) list_copy;
-		}
-
+	public Object getListBaget() {
+		return this.list_baget;
+	}
 		
-		public Ge get_list_copy() {
-			return this.list_copy;
-		}
-
+	public void setListFotolab(Object list_fotolab) {
+		this.list_fotolab = (Ge) list_fotolab;
+	}
 		
-		public void set_list_print(Object list_print) {
-			this.list_print = (Ge) list_print;
-		}
-
+	public Object getListFotolab() {
+		return this.list_fotolab;
+	}
 		
-		public Ge get_list_print() {
-			return this.list_print;
-		}
+	public void setListSphera(Object list_sphera) {
+		this.list_sphera = (Ge) list_sphera;
+	}
 		
-//====================================================
-		
-		public void set_list_baget(Object list_baget) {
-			this.list_baget = (Ge) list_baget;
-			
-		}
-		
-		public Object get_list_baget() {
-			return this.list_baget;
-		}
-		
-		public void set_list_fotolab(Object list_fotolab) {
-			this.list_fotolab = (Ge) list_fotolab;
-		}
-		
-		public Object get_list_fotolab() {
-			return this.list_fotolab;
-		}
-		
-		public void set_list_sphera(Object list_sphera) {
-			this.list_sphera = (Ge) list_sphera;
-		}
-		
-		public Object get_list_sphera() {
-			return this.list_sphera;
-		}
+	public Object getListSphera() {
+		return this.list_sphera;
+	}
 		
 //====technic
+	public void setListNicom(Object list_nicom) {
+		this.list_nicom = (Ge) list_nicom;
+	}
 		
-		public void set_list_nicom(Object list_nicom) {
-			this.list_nicom = (Ge) list_nicom;
-		}
+	public Object getListNicom() {
+		return this.list_nicom;
+	}
 		
-		public Object get_list_nicom() {
-			return this.list_nicom;
-		}
+	public void setListPults(Object list_pults) {
+		this.list_pults = (Ge) list_pults;
+	}
 		
-		public void set_list_pults(Object list_pults) {
-			this.list_pults = (Ge) list_pults;
-			
-		}
+	public Object getListPults() {
+		return this.list_pults;
+	}
 		
-		public Object get_list_pults() {
-			return this.list_pults;
-		}
+	public void setListOther(Object list_other) {
+		this.list_other = (Ge) list_other;
+	}
 		
+	public Object getListOther() {
+		return this.list_other;
+	}
 		
-		public void set_list_other(Object list_other) {
-			this.list_other = (Ge) list_other;
-		}
+	public void setListCardData(Object list_card_data) {
+		this.list_card_data = (Ge) list_card_data;
+	}
 		
-		public Object get_list_other() {
-			return this.list_other;
-		}
-		
-		public void set_list_card_data(Object list_card_data) {
-			this.list_card_data = (Ge) list_card_data;
-		}
-		
-		public Object get_list_card_data() {
-			return this.list_card_data;
-		}
-
+	public Object getListCardData() {
+		return this.list_card_data;
+	}
 }
