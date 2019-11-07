@@ -44,7 +44,7 @@ public class Recognize extends Head {
 //begin day_init complex, this complex contains 3 methods
 	private void day_init() {
 //***to parse the text
-		day_list = text.split("\\n"); //total notes for day (code 13 10 is new line(\\n\\r))
+		day_list = text.split("\\r\\n"); //total notes for day (code 13 10 is new line(\\r\\n))
 			for(int i = 0; i < day_list.length; i++) {
 	        	sort_kind(day_list[i]);
 	        }
