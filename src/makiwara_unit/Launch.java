@@ -5,16 +5,16 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 
 import beans_unit.*;
-import recognition_and_initialization_unit.DeepRecognize;
-import recognition_and_initialization_unit.Recognize;
-import recognition_and_initialization_unit.SagaInitialization;
+import recognition_and_initialization_unit.*;
 
 public class Launch {
 
@@ -31,68 +31,59 @@ public class Launch {
 		try {
 			new Recognize("test\\test3.txt", day);
 			new DeepRecognize(day, sort_day);
-			//new SagaInitialization("saga.txt", day, saga);
-//			System.out.println(si.getSaga().getSaga().length);
-//			saga.setSaga(si.getSaga().getSaga());
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 			//..add yet youself catch
 		}
 		  
-		System.out.println(saga.getSaga().length);
-//get List with Day-object
-//		ArrayList<beans_unit.Day> day_list = new ArrayList<beans_unit.Day>();
-//			for(int i = 0; i < saga.getSaga().length; i++) {
-//				day_list.add(saga.getSaga()[i]);
-//			}
-//..our any manipulation
-//		for(int i = 0; i < day_list.size(); i++ ) {
-//			System.out.println(day_list.get(i).getDate() + " salary: " +  
-//		day_list.get(i).getSalary() + " begin_cash: " + day_list.get(i).getBeginCash());
-//			//plus SortDay_data
-//			new DeepRecognize(day_list.get(i), sort_day);
-//		}
-//		System.out.println("total foto: " + sort_day.getFoto());
-//..only for exemple
-/*
-		FrameDay exemple = new Day();
-		ArrayList<FrameDay> list = new ArrayList();
-*/
+		System.out.println("lenght of array<Day>: " + saga.getSaga().length);
+		//saga.addToSaga(day);
 		
-
-		
-//16-00
-/*			
-		if(!saga.getSaga()[saga.getSaga().length - 1].getDate().equals(day.getDate())) {
-			System.out.println("yes do add");
-			day_list.add(day); //if date1 == date2 attention don't add!!
+//-----work with Day array--------------------
+		ArrayList<beans_unit.Day> day_list = new ArrayList<beans_unit.Day>();
+		for(int i = 0; i < saga.getSaga().length; i++) {
+			day_list.add(saga.getSaga()[i]);
 		}
-		else {
-			//..replacement
-		}
-System.out.println("date1: " + saga.getSaga()[saga.getSaga().length - 1].getDate());
-System.out.println("date2: " + day.getDate());
-		
-		Saga.Day[] d = new Saga.Day[day_list.size()];
 		
 		for(int i = 0; i < day_list.size(); i++) {
-			d[i] = saga.convertDay(day_list.get(i));
+			//System.out.println(day_list.get(i).getDate());
 		}
-		
-		saga.setSaga(d);
-		
-		
-//		String json = gson.toJson(saga);
-//		//System.out.println(json);
+//..date
+/*..main variable: date_one, date_two, general_array_list<Day>, final_array_list<Day> 
+* 01.07.2019 ~~~ 23.07.2019 
+*/
+		System.out.println();
+		String date_one = "18.07.2019";
+		String date_two = "22.07.2019";
+//		String date_check = "";//..general_array
 //		
-//		FileOutputStream fos = new FileOutputStream("saga.txt");
-//	    
-//		byte[] buffer2 = json.getBytes();
-//	        	fos.write(buffer2, 0, buffer2.length);
-//	
-//	        	fos.close();
-*/	
-	}
+//		String date_output_array = "";//..operational_array
+//		
+		TimeManagment tm = new TimeManagment();//..create necessary object for work
+		ArrayList<Day> final_list = (ArrayList<Day>) tm.getInterval(date_one, date_two, day_list);
+		System.out.println(final_list.size());
+		SortDay sort_day_two = new SortDay();
+		
+		for(Day item : final_list){
+			System.out.println(item.getDate());
+			new DeepRecognize(item, sort_day_two);
+			System.out.println(item.getDate() + " total " + sort_day_two.getNicom());
+		}
+		System.out.println("total foto: " + sort_day_two.getNicom());
+		System.out.println();
+//..here we must get interval_array<Day>
+//................................
+		
+		LocalDate myObj = LocalDate.now(); // Create a date object
+	    System.out.println(myObj); // Display the current date
+	    LocalDate date2 = LocalDate.of(2019, 10, 30);
+	    Date dd = new Date(20191029);
+	    //System.out.println(dd.getDay());
+	    LocalDate date3 = null;
+	    date3 = date3.parse("2018-11-07");
+	    System.out.println("compare: " + myObj.compareTo(date3));
+//-------end----------------------------------
 
+	}
 }

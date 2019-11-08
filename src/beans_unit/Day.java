@@ -46,6 +46,10 @@ public class Day implements FrameDay {
 		facture.add(list);
 	        //this.facture = list;
 	}
+	
+	public void setFacture(List<String> facture) {
+		this.facture = facture;
+	}
 	    
 	public List<String> getFacture() {
 		return this.facture;
