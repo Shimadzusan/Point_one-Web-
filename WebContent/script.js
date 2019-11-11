@@ -1,6 +1,13 @@
 
 function press_button(){                                        //method post
     document.getElementById('main_button');
+    var date_one = document.getElementById('date_one').value;
+    console.log('date_one: ' + date_one);
+    var date_two = document.getElementById('date_two').value;
+    console.log('date_two: ' + date_two);
+    var flag_today_data = document.getElementById('flag_today_data').checked;
+    console.log('flag_today_data: ' + flag_today_data);
+    
     console.log(".. from press_button");
     var web_text = document.getElementById('web_text_area').value;
     console.log(web_text);
@@ -60,14 +67,15 @@ function press_button(){                                        //method post
                 "<br>-" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
                 "<br>&nbsp" + 
                 "</td></tr></table>"
-                
             }
         }
         xhr.open('POST', 'ServletHamma', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("facture="+web_text);
-
+        xhr.send("facture=" + web_text + "&date_one=" + date_one + "&date_two="
+        		+ date_two + "&flag_today_data=" + flag_today_data);
+ 
             }
+
 /*some variant of output
   				omega.innerHTML = " &nbsp date: " + Obj.date + 
                 "<table style=\"border: 1px solid black; width: 30%\">" +
@@ -92,6 +100,5 @@ function press_button(){                                        //method post
                 "<br>&nbsp payment for baget: -" + Obj.baget_minus +
                 "<br>&nbsp payment for fotolab: -" + Obj.fotolab_minus +
                 "<br>&nbsp other: -" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
-                "<p>&nbsp salary: " + Obj.salary; 
-                
+                "<p>&nbsp salary: " + Obj.salary;           
  */

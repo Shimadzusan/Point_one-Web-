@@ -1,5 +1,6 @@
 package makiwara_unit;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -54,7 +55,7 @@ public class Launch {
 * 01.07.2019 ~~~ 23.07.2019 
 */
 		System.out.println();
-		String date_one = "18.07.2019";
+		String date_one = "17.07.2019";
 		String date_two = "22.07.2019";
 //		String date_check = "";//..general_array
 //		
@@ -84,6 +85,9 @@ public class Launch {
 	    date3 = date3.parse("2018-11-07");
 	    System.out.println("compare: " + myObj.compareTo(date3));
 //-------end----------------------------------
-
+/*
+ * 		File file=new File("C:\\Users\\user\\eclipse-workspace\\Point_one(Web)\\saga.txt");
+	    System.out.println(file.exists());
+*/
 	}
 }

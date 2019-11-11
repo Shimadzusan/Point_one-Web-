@@ -81,7 +81,7 @@ public class Saga {
 		Gson gson = new Gson();
 		String json = "{\"saga\":" + gson.toJson(this.saga) + "}";
 		
-		FileOutputStream fos = new FileOutputStream("saga.txt");   
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\user\\eclipse-workspace\\Point_one(Web)\\saga.txt");   
 		byte[] buffer2 = json.getBytes();
 	        	fos.write(buffer2, 0, buffer2.length);
 	        	fos.close();

@@ -22,11 +22,11 @@ public class Recognize extends Head {
 		this.day = day;
 	}
 //..how to realize two same constructor? with text and address
-	public Recognize(String address, FrameDay day) throws IOException {
-		this.address = address;
+	public Recognize(String text, FrameDay day) throws IOException {
+		//this.address = address;
 		this.day = (Day) day;
 		day_facture = new ArrayList();
-		this.text = get_text();
+		this.text = text;
 		day_init();
 		
 		day_facture = day.getFacture();
@@ -44,7 +44,7 @@ public class Recognize extends Head {
 //begin day_init complex, this complex contains 3 methods
 	private void day_init() {
 //***to parse the text
-		day_list = text.split("\\r\\n"); //total notes for day (code 13 10 is new line(\\r\\n))
+		day_list = text.split("\\n"); //total notes for day (code 13 10 is new line(\\r\\n))
 			for(int i = 0; i < day_list.length; i++) {
 	        	sort_kind(day_list[i]);
 	        }
