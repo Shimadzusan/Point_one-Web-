@@ -73,6 +73,28 @@ function press_button(){                                        //method post
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("facture=" + web_text + "&date_one=" + date_one + "&date_two="
         		+ date_two + "&flag_today_data=" + flag_today_data);
+        
+//..analisis
+        var xhr2 = new XMLHttpRequest();
+        xhr2.onreadystatechange = function() {
+            if (xhr2.readyState == 4) {
+                var data5 = xhr2.responseText;
+                //var Obj = JSON.parse(data5);
+                //document.getElementById("monitor").firstChild.nodeValue = " date: " + Obj.date;
+ var omega = document.getElementById("element");
+                
+ for(let i = 0; i < 3; i++){            
+ 	omega.innerHTML =   
+ 		omega.innerHTML + "<br>hello" + data5 + "" + i;
+ 	console.log('js for' + i);
+ }
+            }
+        }
+        console.log('ServletDelta');
+        xhr2.open('POST', 'ServletDelta', true);
+        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr2.send("date_x=abcde");
+//..end analisis
  
             }
 

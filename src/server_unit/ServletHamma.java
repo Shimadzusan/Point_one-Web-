@@ -53,7 +53,7 @@ public class ServletHamma extends HttpServlet {
 			for(int i = 0; i < saga.getSaga().length; i++) {
 				day_list.add(saga.getSaga()[i]);
 			}
-//..analizis
+//..analisis
 		TimeManagment tm = new TimeManagment();
 		ArrayList<Day> final_list = (ArrayList<Day>) tm.getInterval(date_one, date_two, day_list);
 		System.out.println(final_list.size());
@@ -61,9 +61,13 @@ public class ServletHamma extends HttpServlet {
 		SortDay sort_day_two = new SortDay();
 		Day day_two = new Day();
 			for(Day item : final_list){
-				System.out.println(item.getDate());
+				System.out.print(item.getDate() + " ");
 				new Recognize(item);//where facture??
 				new DeepRecognize(item, sort_day_two);
+//..analisis 15-11-19
+				SortDay for_intermediate_analisis = new SortDay();
+				new DeepRecognize(item, for_intermediate_analisis);
+				System.out.println(for_intermediate_analisis.getListNicom() + " total: " + for_intermediate_analisis.getNicom());
 			}
 //..here we must get interval_array<Day>
 	

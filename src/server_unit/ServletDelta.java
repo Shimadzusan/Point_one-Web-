@@ -20,13 +20,17 @@ public class ServletDelta extends HttpServlet {
 	    }
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("I am servlet_delta ...method post");
 		
 		request.setCharacterEncoding("utf-8");
 
 		//String web_text = request.getParameter("facture"); //change on facture!
-		String date_one = request.getParameter("date");
-		System.out.println("do: " + date_one);
 		String date_x = request.getParameter("date_x");
 		System.out.println("do: " + date_x);
 		
@@ -45,12 +49,13 @@ public class ServletDelta extends HttpServlet {
 //		String json_sort_day = json.toJson(sort_day);	
 ////..end
 //		String to_jscript = concatJson(json_day, json_sort_day);
-//		response.getWriter().write(to_jscript);
+		String s = "for_intermediate_report";
+		response.getWriter().write(s);
 //
 //		//new Json_history( day, sort_day);
 //		
 //for consol desing
-		System.out.println("======================================");
+		System.out.println("++++++++++++++++++++++++++++++++++");
 		System.out.println();
 	}
 
