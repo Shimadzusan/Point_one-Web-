@@ -75,28 +75,40 @@ function press_button(){                                        //method post
         		+ date_two + "&flag_today_data=" + flag_today_data);
         
 //..analisis
-        var xhr2 = new XMLHttpRequest();
-        xhr2.onreadystatechange = function() {
-            if (xhr2.readyState == 4) {
-                var data5 = xhr2.responseText;
-                //var Obj = JSON.parse(data5);
-                //document.getElementById("monitor").firstChild.nodeValue = " date: " + Obj.date;
- var omega = document.getElementById("element");
-                
- for(let i = 0; i < 3; i++){            
- 	omega.innerHTML =   
- 		omega.innerHTML + "<br>hello" + data5 + "" + i;
- 	console.log('js for' + i);
- }
+        var for_delta = new XMLHttpRequest();
+        for_delta.onreadystatechange = function() {
+            if (for_delta.readyState == 4) {
+                var from_delta = for_delta.responseText;
+                var abc = JSON.parse(from_delta);
+                console.log(abc[1].cash_gain);
+                var omega = document.getElementById("element");
+                omega.innerHTML = "<br>&nbsp";
+ 
+                omega.innerHTML = get_html(abc);
             }
         }
-        console.log('ServletDelta');
-        xhr2.open('POST', 'ServletDelta', true);
-        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr2.send("date_x=abcde");
-//..end analisis
- 
+        
+        for_delta.open('POST', 'ServletDelta', true);
+        for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        for_delta.send("date_x=abcde");
             }
+
+function get_html(abc){ 
+	var z = "";
+	
+	 for(let i = 0; i < abc.length; i++){            
+		 var y = "";
+			 for(let k = 0; k < abc[i].online_income.length; k++){
+			 	y = y + abc[i].online_income[k] + "<br>";
+			 }
+		 
+		z = z + "<table style=\"border: 1px solid black; width: 50%;\">" + 
+	 	"<tr>" + "<td>date</td>" +
+	 	"<td>" + y + "</td>" +
+	 	"<td>total</td></tr></table>";
+	 }
+	return z;
+}
 
 /*some variant of output
   				omega.innerHTML = " &nbsp date: " + Obj.date + 

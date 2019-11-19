@@ -1,5 +1,7 @@
 package server_unit;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +39,17 @@ public class ServletDelta extends HttpServlet {
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
+//..deals analisis		
+		ArrayList<Day> day_interval = Buffer.getFinal_list();
+		ArrayList<Deal> deals = new ArrayList();
+		new DealsRecognize(day_interval, deals, "фнд");
+		System.out.println("deals size: " + deals.size());
+		System.out.println("deals size2: " + deals.get(2).getOnline_income());
 		
+		Gson json = new Gson();
+		String json_deals = json.toJson(deals);
+		response.getWriter().write(json_deals);
+//..end
 //		Day day = new Day();
 //		SortDay sort_day = new SortDay();    
 //		new Recognize(web_text, day);		 
@@ -49,8 +61,8 @@ public class ServletDelta extends HttpServlet {
 //		String json_sort_day = json.toJson(sort_day);	
 ////..end
 //		String to_jscript = concatJson(json_day, json_sort_day);
-		String s = "for_intermediate_report";
-		response.getWriter().write(s);
+		//String s = "for_intermediate_report";
+//		response.getWriter().write(json_deals);
 //
 //		//new Json_history( day, sort_day);
 //		

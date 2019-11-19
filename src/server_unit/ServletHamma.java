@@ -55,8 +55,9 @@ public class ServletHamma extends HttpServlet {
 			}
 //..analisis
 		TimeManagment tm = new TimeManagment();
-		ArrayList<Day> final_list = (ArrayList<Day>) tm.getInterval(date_one, date_two, day_list);
+		ArrayList<Day> final_list = (ArrayList<Day>) tm.getInterval(date_one, date_two, day_list);//!INTERVAL
 		System.out.println(final_list.size());
+		Buffer.setFinal_list(final_list);
 		
 		SortDay sort_day_two = new SortDay();
 		Day day_two = new Day();
