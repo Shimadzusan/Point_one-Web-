@@ -44,7 +44,7 @@ public class ServletDelta extends HttpServlet {
 		ArrayList<Deal> deals = new ArrayList();
 		new DealsRecognize(day_interval, deals, "фнд");
 		System.out.println("deals size: " + deals.size());
-		System.out.println("deals size2: " + deals.get(2).getOnline_income());
+		//System.out.println("deals size2: " + deals.get(2).getOnline_income());
 		
 		Gson json = new Gson();
 		String json_deals = json.toJson(deals);

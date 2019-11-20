@@ -48,7 +48,7 @@ table#t01 {
             
         <div style="color: white; width: 22%; height: 67%; background: #1C6956; font-family: Roman; border: solid 1px black; float: right">
             <p align="center"><textarea  id = "web_text_area" style= "background-color: #ffe; color: #930; name: comment; cols: 100; rows: 68; width: 85%; height: 85%"></textarea></p>
-            <p align="center"><input  onclick="press_button()" id="main_button" type = "submit" value = "Отправить текст"></p>
+            <p align="center"><input onclick="press_button()" id="main_button" type = "submit" value = "Отправить текст"></p>
         </div>
                  
 <! modul_three>
@@ -59,23 +59,59 @@ table#t01 {
         <div style="color: black; width: 100%; height: 23%; background: #96aab6; font-family: Roman; border: solid 1px black;  float: left">
                 <br>&nbsp date <input type="text" id="date_one" size="10">&nbsp &nbsp<input type="text" id="date_two" size="10">
                 &nbsp use only today data&nbsp<input name="name" id="flag_today_data" type="checkbox" value="false">
-        	<table style="width:20%">
+        	<table style="width:70%">
         	 <tr>
-    <td>&nbsp displays only nicom &nbsp
-    <br>&nbsp displays only pults &nbsp
-    <br>&nbsp displays only baget &nbsp
-    <br>&nbsp displays only online income &nbsp
+        	 <td>
+ 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	    <select>
+		<option selected>standart chief report</option>
+		<option>classical report</option>
+	    <option>only one item</option>
+	    <option>online payment report&nbsp&nbsp&nbsp</option>
+		</select>
+		<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<select>
+		<option selected disabled>option for only one item</option>
+		<option>ником</option>
+		<option>пульты</option>
+	    <option>багет</option>
+	    <option>фнд</option>
+	    <option>копия</option>
+	    <option>печать</option>
+	    
+		</select>
+		<p align="center"><input onclick="press_confirm()" id="confirm" type="submit" value="Confirm"></p>
+		 
+	</td>
+    <td>
+    option for only one item:
+    <br>total_gain
+	 <br>cash_gain
+	 <br>online_income
+	 <br>expense
     </td>
-    <td><input name="name" type="checkbox" value="true" >
+    <td>&nbsp
+    <br><input name="name" type="checkbox" value="true" >
     <br><input name="name" type="checkbox" value="true" >
     <br><input name="name" type="checkbox" value="true" >
     <br><input name="name" type="checkbox" value="true" >
     </td>
-   
+ 	
+	<td style="vertical-align: top">
+	 
+	 open this report in another window +
+	  <p>sort day(if "off") or deals(if "on") &nbsp&nbsp&nbsp&nbsp&nbsp <input name="name" type="checkbox" value="true">
+	 
+    </td>
+	 </tr>
+	 </table>
+	   
+	</td>
   </tr>
             </table> 
-                
+             
         </div>
+        
          <div id="element">
                 
         </div>

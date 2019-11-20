@@ -74,23 +74,6 @@ function press_button(){                                        //method post
         xhr.send("facture=" + web_text + "&date_one=" + date_one + "&date_two="
         		+ date_two + "&flag_today_data=" + flag_today_data);
         
-//..analisis
-        var for_delta = new XMLHttpRequest();
-        for_delta.onreadystatechange = function() {
-            if (for_delta.readyState == 4) {
-                var from_delta = for_delta.responseText;
-                var abc = JSON.parse(from_delta);
-                console.log(abc[1].cash_gain);
-                var omega = document.getElementById("element");
-                omega.innerHTML = "<br>&nbsp";
- 
-                omega.innerHTML = get_html(abc);
-            }
-        }
-        
-        for_delta.open('POST', 'ServletDelta', true);
-        for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        for_delta.send("date_x=abcde");
             }
 
 function get_html(abc){ 
@@ -108,6 +91,29 @@ function get_html(abc){
 	 	"<td>total</td></tr></table>";
 	 }
 	return z;
+}
+
+function press_confirm() {
+	document.getElementById('confirm');
+	 console.log('confirm');
+	//..analisis
+     var for_delta = new XMLHttpRequest();
+     for_delta.onreadystatechange = function() {
+         if (for_delta.readyState == 4) {
+             var from_delta = for_delta.responseText;
+             var abc = JSON.parse(from_delta);
+             console.log(abc[1].cash_gain);
+             var omega = document.getElementById("element");
+             omega.innerHTML = "<br>&nbsp";
+
+             omega.innerHTML = get_html(abc);
+         }
+     }
+     
+     for_delta.open('POST', 'ServletDelta', true);
+     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+     for_delta.send("date_x=abcde");
+	
 }
 
 /*some variant of output
