@@ -3,12 +3,23 @@ package beans_unit;
 import java.util.ArrayList;
 
 public class Deal {
+	String date;
 	String type_of_deal;
+	
 	ArrayList<String> total_gain;
 	ArrayList<String> cash_gain;
 	ArrayList<String> online_income;//..sber, tinkoff, pochta-bank
 		
-	ArrayList<String> expense;	
+	ArrayList<String> expense;
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 	public String getType_of_deal() {
 		return type_of_deal;
 	}

@@ -34,6 +34,7 @@ public class DealsRecognize {
 			day_facture = (ArrayList<String>) day.getFacture();
 			//System.out.println("dealsreco: " + day.getFacture());
 			init_deal();
+			general_list.clear();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		}
 		
 	}
@@ -52,15 +53,15 @@ public class DealsRecognize {
 		deal.setCash_gain(getCash());
 		deal.setOnline_income(getOnlineIcome());
 		deal.setExpense(getExpense());
-		System.out.println("deals size333: " + deal.getTotal_gain());
+		//System.out.println("deals size333: " + deal.getTotal_gain());
 		
 		object_for_init.add(deal);
 		
-		general_list.removeAll(general_list);//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
 		
 		int omega = object_for_init.size();
-		System.out.println("deals size222: " + object_for_init.get(omega - 1).getTotal_gain());
-		System.out.println("deals size555: " + object_for_init.get(omega - 1).getOnline_income());
+//		System.out.println("deals size2225522: " + object_for_init.get(omega - 1).getTotal_gain());
+//		System.out.println("deals size555: " + object_for_init.get(omega - 1).getOnline_income());
 		
 	}
 	

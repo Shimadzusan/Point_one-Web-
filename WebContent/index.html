@@ -59,62 +59,78 @@ table#t01 {
         <div style="color: black; width: 100%; height: 23%; background: #96aab6; font-family: Roman; border: solid 1px black;  float: left">
                 <br>&nbsp date <input type="text" id="date_one" size="10">&nbsp &nbsp<input type="text" id="date_two" size="10">
                 &nbsp use only today data&nbsp<input name="name" id="flag_today_data" type="checkbox" value="false">
-        	<table style="width:70%">
+                &nbsp&nbsp&nbsp<input  onclick="press_enga()" id="engage" type="submit" value="Standart">
+                &nbsp&nbsp&nbsp<input  onclick="press_enga()" id="engage" type="submit" value="&nbsp Report &nbsp">
+        		&nbsp&nbsp&nbsp ...status: standart mode
+        	
+        	<table style="width:40%">
         	 <tr>
-        	 <td>
- 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-	    <select>
+        	 <td><br>
+ 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	    <select id="list">
 		<option selected>standart chief report</option>
 		<option>classical report</option>
 	    <option>only one item</option>
-	    <option>online payment report&nbsp&nbsp&nbsp</option>
+	    <option>online payment report&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
 		</select>
-		<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<select>
-		<option selected disabled>option for only one item</option>
-		<option>ником</option>
-		<option>пульты</option>
-	    <option>багет</option>
-	    <option>фнд</option>
-	    <option>копия</option>
-	    <option>печать</option>
-	    
-		</select>
-		<p align="center"><input onclick="press_confirm()" id="confirm" type="submit" value="Confirm"></p>
+		
+		<p align="center"><input onclick="press_confirm()" id="confirm" type="submit" value="Confirm">
+		
+		</p>
+		
 		 
-	</td>
-    <td>
-    option for only one item:
-    <br>total_gain
-	 <br>cash_gain
-	 <br>online_income
-	 <br>expense
-    </td>
-    <td>&nbsp
-    <br><input name="name" type="checkbox" value="true" >
-    <br><input name="name" type="checkbox" value="true" >
-    <br><input name="name" type="checkbox" value="true" >
-    <br><input name="name" type="checkbox" value="true" >
-    </td>
+	
  	
-	<td style="vertical-align: top">
+	<td>
 	 
 	 open this report in another window +
-	  <p>sort day(if "off") or deals(if "on") &nbsp&nbsp&nbsp&nbsp&nbsp <input name="name" type="checkbox" value="true">
 	 
     </td>
+    
 	 </tr>
 	 </table>
 	   
-	</td>
-  </tr>
-            </table> 
+
              
         </div>
         
          <div id="element">
                 
         </div>
+        <script id="modul" type="text/html">
+    
+        <select id="item"> <option disabled>option for only one item</option>
+		<option>ником сервис</option>
+        <option>пульты</option>
+        <option>багет</option> 
+	    <option>фнд</option>
+        <option>копия</option>
+        <option>печать</option>
+		</select> 
+
+	    <p>&nbsp&nbsp<select id="configuration"> <option>days</option>
+		<option>deals</option> <option>option for only one item</option></select>
+		
+
+		
+<table><tr>
+		 <td>
+    <br>total_gain
+	 <br>cash_gain
+	 <br>online_income
+	 <br>expense
+    </td>
+    <td>&nbsp
+    <br><input id="total_gain" name="name" type="checkbox" value="true" >
+    <br><input id="cash_gain" name="name" type="checkbox" value="true" >
+    <br><input id="online_income" name="name" type="checkbox" value="true" >
+    <br><input id="expense" name="name" type="checkbox" value="true" >
+    </td>
+</table></tr>
+		
+		<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input  onclick="press_engage()" id="engage" type="submit" value="Engage">
+</script>
         
     </body>     
 </html>

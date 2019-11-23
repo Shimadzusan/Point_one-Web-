@@ -41,31 +41,25 @@ public class ServletDelta extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 //..deals analisis		
 		ArrayList<Day> day_interval = Buffer.getFinal_list();
-		ArrayList<Deal> deals = new ArrayList();
+		ArrayList<Deal> deals = new ArrayList<Deal>();
 		new DealsRecognize(day_interval, deals, "фнд");
 		System.out.println("deals size: " + deals.size());
-		//System.out.println("deals size2: " + deals.get(2).getOnline_income());
-		
+//..adaptize
+//		AdapterDeals adapter = new AdapterDeals(deals.get(2));
+//		System.out.println("adapter: " + adapter.getCash_gain());
+//		System.out.println("adapter: " + adapter.getOnlineIncome());
+		ArrayList<AdapterDeals> adapter = new ArrayList<AdapterDeals>();
+			for(int i = 0; i < deals.size(); i++) {
+				AdapterDeals adpt = new AdapterDeals(deals.get(i));
+				adapter.add(adpt);
+			}
+			System.out.println("a-r " + adapter.size());
+//.....
 		Gson json = new Gson();
 		String json_deals = json.toJson(deals);
 		response.getWriter().write(json_deals);
 //..end
-//		Day day = new Day();
-//		SortDay sort_day = new SortDay();    
-//		new Recognize(web_text, day);		 
-//		new DeepRecognize(day, sort_day);
-//		
-////..new approach by Yong: object of sort_day --convert--> to json
-//		Gson json = new Gson();
-//		String json_day = json.toJson(day);
-//		String json_sort_day = json.toJson(sort_day);	
-////..end
-//		String to_jscript = concatJson(json_day, json_sort_day);
-		//String s = "for_intermediate_report";
-//		response.getWriter().write(json_deals);
-//
-//		//new Json_history( day, sort_day);
-//		
+
 //for consol desing
 		System.out.println("++++++++++++++++++++++++++++++++++");
 		System.out.println();

@@ -95,6 +95,7 @@ function get_html(abc){
 
 function press_confirm() {
 	document.getElementById('confirm');
+	document.getElementById('one_item');
 	 console.log('confirm');
 	//..analisis
      var for_delta = new XMLHttpRequest();
@@ -113,7 +114,98 @@ function press_confirm() {
      for_delta.open('POST', 'ServletDelta', true);
      for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
      for_delta.send("date_x=abcde");
+     
+     var html = "";
+     var list = document.getElementById('list').value;
+     if (list == 'only one item') {
+    	html = press_en();
+//    	 html = "<select> <option disabled>option for only one item</option>" + 
+//		"<option>ником сервис</option> <option>пульты</option> <option>багет</option>" + 
+//	    "<option>фнд</option><option>копия</option> <option>печать</option>" +
+//	    "</select>" + 
+//	    "<br><select> <option>days</option>" + 
+//		"<option>deals</option> <option>option for only one item</option></select>";
+     }
+     var item = document.getElementById("monitor");
+     item.innerHTML = list + "<p>&nbsp" + html;
 	
+}
+
+function press_en() {
+	
+	
+	document.getElementById('engage');
+	document.getElementById('one_item');
+	//var setting = "setting.html"
+	
+	var xxx = document.getElementById('modul').text;
+	 console.log('confirm');
+	 console.log(xxx);
+	 
+     var delta = document.getElementById("monitor");
+     delta.innerHTML = "<br>&nbsp" + xxx;
+	//..analisis
+	 
+	
+     var for_delta = new XMLHttpRequest();
+     for_delta.onreadystatechange = function() {
+         if (for_delta.readyState == 4) {
+             var from_delta = for_delta.responseText;
+             var abc = JSON.parse(from_delta);
+             console.log(abc[1].cash_gain);
+             var omega = document.getElementById("monitor");
+             omega.innerHTML = "<br>&nbsp";
+
+             omega.innerHTML = "one_tem";
+         }
+     }
+     
+//     for_delta.open('POST', 'ServletEpsa', true);
+//     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//     for_delta.send("date_x=abcde");
+     
+return xxx;
+}
+
+function press_engage() {
+	
+	var item = document.getElementById('item').value;
+	var configuration = document.getElementById('configuration').value;
+	var total_gain = document.getElementById('total_gain').checked;
+	var cash_gain = document.getElementById('cash_gain').checked;
+	var online_income = document.getElementById('online_income').checked;
+	var expense = document.getElementById('expense').checked;
+	
+	let one_object = {
+			itm : item,
+			con : configuration,
+			tot : total_gain,
+			cas : cash_gain,
+			onl : online_income,
+			exp : expense
+			
+			};
+	var json = JSON.stringify(one_object);
+	console.log("js obj: " + json);
+	 
+	
+     var for_delta = new XMLHttpRequest();
+     for_delta.onreadystatechange = function() {
+         if (for_delta.readyState == 4) {
+//             var from_delta = for_delta.responseText;
+//             var abc = JSON.parse(from_delta);
+//             console.log(abc[1].cash_gain);
+//             var omega = document.getElementById("monitor");
+//             omega.innerHTML = "<br>&nbsp";
+//
+//             omega.innerHTML = "one_tem";
+         }
+     }
+     
+     for_delta.open('POST', 'ServletOneItem', true);
+     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+     for_delta.send("date_x=" + json);
+     
 }
 
 /*some variant of output
