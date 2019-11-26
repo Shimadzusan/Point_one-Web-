@@ -2,6 +2,42 @@
 
     <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    
+    <style>
+::-webkit-scrollbar-button { 
+background-image:url(''); 
+background-repeat:no-repeat; 
+width:6px; 
+height:0px 
+} 
+ 
+::-webkit-scrollbar-track { 
+background-color:#96aab6; 
+box-shadow:0px 0px 3px #000 inset; 
+} 
+ 
+::-webkit-scrollbar-thumb { 
+-webkit-border-radius: 5px; 
+border-radius: 5px; 
+background-color:#1C6956; 
+box-shadow:0px 1px 1px #fff inset; 
+background-image:url('assets/59610063.png'); 
+background-position:center; 
+background-repeat:no-repeat; 
+} 
+ 
+::-webkit-resizer{ 
+background-image:url(''); 
+background-repeat:no-repeat; 
+width:7px; 
+height:0px 
+} 
+ 
+::-webkit-scrollbar{ 
+width: 11px; 
+}
+</style>
+    
         
         <link rel="stylesheet" href="style.css">
     </head>
@@ -58,15 +94,12 @@ table#t01 {
             
         <div style="color: black; width: 100%; height: 23%; background: #96aab6; font-family: Roman; border: solid 1px black;  float: left">
                 <br>&nbsp date <input type="text" id="date_one" size="10">&nbsp &nbsp<input type="text" id="date_two" size="10">
-                &nbsp use only today data&nbsp<input name="name" id="flag_today_data" type="checkbox" value="false">
-                &nbsp&nbsp&nbsp<input  onclick="press_enga()" id="engage" type="submit" value="Standart">
-                &nbsp&nbsp&nbsp<input  onclick="press_enga()" id="engage" type="submit" value="&nbsp Report &nbsp">
-        		&nbsp&nbsp&nbsp ...status: standart mode
+        		&nbsp&nbsp&nbsp ...status: standart(or report) mode
         	
         	<table style="width:40%">
         	 <tr>
         	 <td><br>
- 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+ 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	    <select id="list">
 		<option selected>standart chief report</option>
 		<option>classical report</option>
@@ -74,32 +107,24 @@ table#t01 {
 	    <option>online payment report&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</option>
 		</select>
 		
-		<p align="center"><input onclick="press_confirm()" id="confirm" type="submit" value="Confirm">
-		
-		</p>
-		
-		 
-	
+		<p align="center"><input onclick="press_confirm()" id="confirm" type="submit" value="Confirm"></p>
  	
-	<td>
-	 
-	 open this report in another window +
-	 
-    </td>
+		<td>
+			open this report in another window +
+	    </td>
     
-	 </tr>
-	 </table>
-	   
-
-             
+	 	</tr>
+	 	</table>     
         </div>
         
-         <div id="element">
-                
+        <div id="element">
         </div>
+        
         <script id="modul" type="text/html">
-    
-        <select id="item"> <option disabled>option for only one item</option>
+   <table style="width: 60%"><tr>
+		 <td>
+
+        &nbsp&nbsp<select id="item"> <option disabled>option for only one item</option>
 		<option>ником сервис</option>
         <option>пульты</option>
         <option>багет</option> 
@@ -115,21 +140,29 @@ table#t01 {
 		
 <table><tr>
 		 <td>
-    <br>total_gain
 	 <br>cash_gain
 	 <br>online_income
 	 <br>expense
+	<br>total_gain
     </td>
     <td>&nbsp
-    <br><input id="total_gain" name="name" type="checkbox" value="true" >
     <br><input id="cash_gain" name="name" type="checkbox" value="true" >
     <br><input id="online_income" name="name" type="checkbox" value="true" >
     <br><input id="expense" name="name" type="checkbox" value="true" >
+<br><input id="total_gain" name="name" type="checkbox" value="true" >
     </td>
-</table></tr>
+</table>
+
 		
 		<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 		<input  onclick="press_engage()" id="engage" type="submit" value="Engage">
+</td>
+<td style="vertical-align: top">
+<div style="overflow: auto; height: 250px" id="one_item_monitor">
+</div>
+</td>
+</tr>
+</table>
 </script>
         
     </body>     

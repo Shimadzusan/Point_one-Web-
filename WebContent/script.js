@@ -1,13 +1,9 @@
 
 function press_button(){                                        //method post
     document.getElementById('main_button');
-    var date_one = document.getElementById('date_one').value;
-    console.log('date_one: ' + date_one);
-    var date_two = document.getElementById('date_two').value;
-    console.log('date_two: ' + date_two);
-    var flag_today_data = document.getElementById('flag_today_data').checked;
-    console.log('flag_today_data: ' + flag_today_data);
-    
+//    var flag_today_data = document.getElementById('flag_today_data').checked;
+//    console.log('flag_today_data: ' + flag_today_data);
+//    
     console.log(".. from press_button");
     var web_text = document.getElementById('web_text_area').value;
     console.log(web_text);
@@ -69,10 +65,10 @@ function press_button(){                                        //method post
                 "</td></tr></table>"
             }
         }
-        xhr.open('POST', 'ServletHamma', true);
+        //xhr.open('POST', 'ServletHamma', true);
+        xhr.open('POST', 'ServletStandartMode', true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("facture=" + web_text + "&date_one=" + date_one + "&date_two="
-        		+ date_two + "&flag_today_data=" + flag_today_data);
+        xhr.send("facture=" + web_text);
         
             }
 
@@ -94,6 +90,16 @@ function get_html(abc){
 }
 
 function press_confirm() {
+	 var date_one = document.getElementById('date_one').value;
+	    console.log('date_one: ' + date_one);
+	    var date_two = document.getElementById('date_two').value;
+	    console.log('date_two: ' + date_two);
+//	    var flag_today_data = document.getElementById('flag_today_data').checked;
+//	    console.log('flag_today_data: ' + flag_today_data);
+	
+	    document.getElementById('confirm');
+	    var type_of_report = document.getElementById('list').value;
+	    
 	document.getElementById('confirm');
 	document.getElementById('one_item');
 	 console.log('confirm');
@@ -104,16 +110,17 @@ function press_confirm() {
              var from_delta = for_delta.responseText;
              var abc = JSON.parse(from_delta);
              console.log(abc[1].cash_gain);
-             var omega = document.getElementById("element");
+             var omega = document.getElementById("monitor");
              omega.innerHTML = "<br>&nbsp";
 
              omega.innerHTML = get_html(abc);
          }
      }
      
-     for_delta.open('POST', 'ServletDelta', true);
+     for_delta.open('POST', 'ServletReportMode', true);
      for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-     for_delta.send("date_x=abcde");
+     for_delta.send("date_one=" + date_one + "&date_two=" + date_two +
+    		 "&type_of_report=" + type_of_report);
      
      var html = "";
      var list = document.getElementById('list').value;
@@ -179,10 +186,10 @@ function press_engage() {
 	let one_object = {
 			itm : item,
 			con : configuration,
-			tot : total_gain,
 			cas : cash_gain,
 			onl : online_income,
-			exp : expense
+			exp : expense,
+			tot : total_gain
 			
 			};
 	var json = JSON.stringify(one_object);
@@ -192,13 +199,14 @@ function press_engage() {
      var for_delta = new XMLHttpRequest();
      for_delta.onreadystatechange = function() {
          if (for_delta.readyState == 4) {
-//             var from_delta = for_delta.responseText;
-//             var abc = JSON.parse(from_delta);
-//             console.log(abc[1].cash_gain);
-//             var omega = document.getElementById("monitor");
-//             omega.innerHTML = "<br>&nbsp";
-//
-//             omega.innerHTML = "one_tem";
+             var html_text = for_delta.responseText;
+//..from ServletOneItem we get simple html-text, and put it to html-page
+             
+             var omega = document.getElementById("one_item_monitor");
+             var x = document.getElementById("one_item_monitor").text;
+             omega.innerHTML = "<br>&nbsp";
+
+             omega.innerHTML = html_text;
          }
      }
      

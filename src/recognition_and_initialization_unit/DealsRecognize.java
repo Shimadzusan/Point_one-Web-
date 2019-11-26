@@ -17,6 +17,7 @@ public class DealsRecognize {
 	ArrayList<String> cash_list;
 	ArrayList<String> online_list;
 	ArrayList<String> expense_list;
+	String date;
 	
 	public DealsRecognize(ArrayList<Day> day_interval, ArrayList<Deal> object_for_init, String deal_type) {
 		this.day_interval = day_interval; 
@@ -54,6 +55,7 @@ public class DealsRecognize {
 		deal.setOnline_income(getOnlineIcome());
 		deal.setExpense(getExpense());
 		//System.out.println("deals size333: " + deal.getTotal_gain());
+		deal.setDate(day.getDate());
 		
 		object_for_init.add(deal);
 		
