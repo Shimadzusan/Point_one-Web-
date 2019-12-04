@@ -124,15 +124,15 @@ function press_confirm() {
      
      var html = "";
      var list = document.getElementById('list').value;
+     
      if (list == 'only one item') {
     	html = press_en();
-//    	 html = "<select> <option disabled>option for only one item</option>" + 
-//		"<option>ником сервис</option> <option>пульты</option> <option>багет</option>" + 
-//	    "<option>фнд</option><option>копия</option> <option>печать</option>" +
-//	    "</select>" + 
-//	    "<br><select> <option>days</option>" + 
-//		"<option>deals</option> <option>option for only one item</option></select>";
      }
+     
+     if (list == 'online payment report') {
+     	html = call_onliene_income();
+     }
+     
      var item = document.getElementById("monitor");
      item.innerHTML = list + "<p>&nbsp" + html;
 	
@@ -149,27 +149,41 @@ function press_en() {
 	 console.log('confirm');
 	 console.log(xxx);
 	 
-     var delta = document.getElementById("monitor");
-     delta.innerHTML = "<br>&nbsp" + xxx;
-	//..analisis
-	 
-	
-     var for_delta = new XMLHttpRequest();
-     for_delta.onreadystatechange = function() {
-         if (for_delta.readyState == 4) {
-             var from_delta = for_delta.responseText;
-             var abc = JSON.parse(from_delta);
-             console.log(abc[1].cash_gain);
-             var omega = document.getElementById("monitor");
-             omega.innerHTML = "<br>&nbsp";
-
-             omega.innerHTML = "one_tem";
-         }
-     }
+//     var delta = document.getElementById("monitor");
+//     delta.innerHTML = "<br>&nbsp" + xxx;
+//	//..analisis
+//	 
+//	
+//     var for_delta = new XMLHttpRequest();
+//     for_delta.onreadystatechange = function() {
+//         if (for_delta.readyState == 4) {
+//             var from_delta = for_delta.responseText;
+//             var abc = JSON.parse(from_delta);
+//             console.log(abc[1].cash_gain);
+//             var omega = document.getElementById("monitor");
+//             omega.innerHTML = "<br>&nbsp";
+//
+//             omega.innerHTML = "one_tem";
+//         }
+//     }
      
 //     for_delta.open('POST', 'ServletEpsa', true);
 //     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 //     for_delta.send("date_x=abcde");
+     
+return xxx;
+}
+
+
+function call_onliene_income() {
+	
+	//var setting = "setting.html"
+	
+	var xxx = document.getElementById('modulOnlineIncome').text;
+	 console.log('call_onliene_income');
+	 //console.log(xxx);
+	
+	//..analisis
      
 return xxx;
 }
@@ -215,30 +229,40 @@ function press_engage() {
      for_delta.send("date_x=" + json);
      
 }
+function press_online_income() {
+	
+	var configuration = document.getElementById('configuration').value;
+	var sber = document.getElementById('sber').checked;
+	
+	
+	let online_income_object = {
+			con : configuration,
+			sber : document.getElementById('sber').checked,
+			tinkoff : document.getElementById('tinkoff').checked,
+			pochta_bank : document.getElementById('pochta_bank').checked,
+			total : document.getElementById('total').checked
+			
+			};
+	var json = JSON.stringify(online_income_object);
+	console.log("js obj: " + json);
+	 
+	
+     var for_delta = new XMLHttpRequest();
+     for_delta.onreadystatechange = function() {
+         if (for_delta.readyState == 4) {
+             var html_text = for_delta.responseText;
+//..from ServletOneItem we get simple html-text, and put it to html-page
+             
+             var omega = document.getElementById("online_income_monitor");
+             var x = document.getElementById("online_income_monitor").text;
+             omega.innerHTML = "<br>&nbsp";
 
-/*some variant of output
-  				omega.innerHTML = " &nbsp date: " + Obj.date + 
-                "<table style=\"border: 1px solid black; width: 30%\">" +
-                "<tr><td>&nbsp begin_cash: " +
-                "<br>&nbsp end_cash: </td>" + 
-                
-                "<td>" + Obj.begin_cash + "<br>" + Obj.end_cash + "</td></tr></table>" + 
-                //"<br>&nbsp end_cash: " + Obj.end_cash +
-                "<br>&nbsp total_value_of_deals: ---" + 
-                "<br>&nbsp result income: " + Obj.income +
-                "<br>&nbsp result payment: " + Obj.payment +
-                "<p>&nbsp (+Plus+)<br>&nbsp online_income: from sber: " + Obj.sber + "&nbsp from tinkoff: -//-" +
-                "<br>&nbsp income from nicom: " + Obj.nicom +
-                "<br>&nbsp income from pults: " + Obj.pults +
-                "<br>&nbsp фнд: " + Obj.foto +
-                "<br>&nbsp копия: " + Obj.copy +
-                "<br>&nbsp печать: " + Obj.print +
-                "<br>&nbsp other: " + (Obj.income - Obj.foto - Obj.copy - Obj.print - Obj.pults - Obj.nicom) +
-                "<br>&nbsp total**: " + (Obj.income - Obj.pults - Obj.nicom) +
-                "<p>&nbsp (-Minus-)<br>&nbsp payment for nicom: -" + Obj.nicom_minus +
-                "<br>&nbsp payment for pults: -" + Obj.pults_minus +
-                "<br>&nbsp payment for baget: -" + Obj.baget_minus +
-                "<br>&nbsp payment for fotolab: -" + Obj.fotolab_minus +
-                "<br>&nbsp other: -" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
-                "<p>&nbsp salary: " + Obj.salary;           
- */
+             omega.innerHTML = html_text;
+         }
+     }
+     
+     for_delta.open('POST', 'ServletOnlineIncome', true);
+     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+     for_delta.send("data_s=" + json);
+     
+}
