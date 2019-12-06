@@ -52,9 +52,7 @@ public class ServletReportMode extends HttpServlet {
 		System.out.println("final list size: " + final_list.size());
 		Buffer.setFinal_list(final_list);
 
-		
-
-//..deals analisis		
+//..deals analisis BEGIN <STANDART CHIEF REPORT>		
 		ArrayList<Day> day_interval = Buffer.getFinal_list();
 		ArrayList<Deal> deals = new ArrayList<Deal>();
 		new DealsRecognize(day_interval, deals, "фнд");

@@ -91,30 +91,28 @@ function get_html(abc){
 
 function press_confirm() {
 	 var date_one = document.getElementById('date_one').value;
-	    console.log('date_one: ' + date_one);
-	    var date_two = document.getElementById('date_two').value;
-	    console.log('date_two: ' + date_two);
+	 var date_two = document.getElementById('date_two').value;
+	 
+//	 console.log('date_one: ' + date_one);   
+//	 console.log('date_two: ' + date_two);
 //	    var flag_today_data = document.getElementById('flag_today_data').checked;
 //	    console.log('flag_today_data: ' + flag_today_data);
 	
-	    document.getElementById('confirm');
-	    var type_of_report = document.getElementById('list').value;
-	    
-	document.getElementById('confirm');
-	document.getElementById('one_item');
-	 console.log('confirm');
+	var type_of_report = document.getElementById('list').value;
+	console.log('function press confirm');
 	//..analisis
      var for_delta = new XMLHttpRequest();
      for_delta.onreadystatechange = function() {
-         if (for_delta.readyState == 4) {
-             var from_delta = for_delta.responseText;
-             var abc = JSON.parse(from_delta);
-             console.log(abc[1].cash_gain);
-             var omega = document.getElementById("monitor");
-             omega.innerHTML = "<br>&nbsp";
-
-             omega.innerHTML = get_html(abc);
-         }
+         
+//    	 if (for_delta.readyState == 4) {
+//             var from_delta = for_delta.responseText;
+//             var abc = JSON.parse(from_delta);
+//             console.log(abc[1].cash_gain);
+//             var omega = document.getElementById("monitor");
+//             omega.innerHTML = "<br>&nbsp";
+//
+//             omega.innerHTML = get_html(abc);
+//         }
      }
      
      for_delta.open('POST', 'ServletReportMode', true);
@@ -133,8 +131,13 @@ function press_confirm() {
      	html = call_onliene_income();
      }
      
+     if (list == 'standart chief report') {
+      	html = call_chief_report();
+      }
+      
+     
      var item = document.getElementById("monitor");
-     item.innerHTML = list + "<p>&nbsp" + html;
+     item.innerHTML = list + html;
 	
 }
 
@@ -187,6 +190,34 @@ function call_onliene_income() {
      
 return xxx;
 }
+
+function call_chief_report() {
+	
+	var xxx = "<br>&nbsp(Standart Chief Report Version Two)";
+	 console.log('call_chief_report');
+	 
+	 var for_delta = new XMLHttpRequest();
+     for_delta.onreadystatechange = function() {
+         if (for_delta.readyState == 4) {
+             var html_text = for_delta.responseText;
+//..from ServletOneItem we get simple html-text, and put it to html-page
+             
+             var omega = document.getElementById("monitor");
+        console.log('html_text: ' + html_text);
+         xxx = xxx + html_text;
+         console.log('xxx: ' + xxx);
+         omega.innerHTML = xxx;
+         }
+     }
+//КОСТЫЛЬ НА КОСТЫЛЕ ИБО ВСЕ СРОЧНЕЕ СРОЧНОГО!!!!!
+     //ВСЁ ПЕРЕДЕЛАТЬ!!!!
+     for_delta.open('POST', 'ServletStandartChiefReport', true);
+     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+     for_delta.send("data_s=StandartChiefReport");
+     console.log('return xxx: ' + xxx);
+return xxx;
+}
+
 
 function press_engage() {
 	
@@ -266,3 +297,5 @@ function press_online_income() {
      for_delta.send("data_s=" + json);
      
 }
+
+
