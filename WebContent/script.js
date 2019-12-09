@@ -134,6 +134,10 @@ function press_confirm() {
      if (list == 'standart chief report') {
       	html = call_chief_report();
       }
+     
+     if (list == 'classical report') {
+       	html = call_classical_report();
+       }
       
      
      var item = document.getElementById("monitor");
@@ -212,6 +216,33 @@ function call_chief_report() {
 //КОСТЫЛЬ НА КОСТЫЛЕ ИБО ВСЕ СРОЧНЕЕ СРОЧНОГО!!!!!
      //ВСЁ ПЕРЕДЕЛАТЬ!!!!
      for_delta.open('POST', 'ServletStandartChiefReport', true);
+     for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+     for_delta.send("data_s=StandartChiefReport");
+     console.log('return xxx: ' + xxx);
+return xxx;
+}
+
+function call_classical_report() {
+	
+	var xxx = "<br>&nbsp(Classical Report Version One)";
+	 console.log('call_chief_report');
+	 
+	 var for_delta = new XMLHttpRequest();
+     for_delta.onreadystatechange = function() {
+         if (for_delta.readyState == 4) {
+             var html_text = for_delta.responseText;
+//..from ServletOneItem we get simple html-text, and put it to html-page
+             
+             var omega = document.getElementById("monitor");
+        console.log('html_text: ' + html_text);
+         xxx = xxx + html_text;
+         console.log('xxx: ' + xxx);
+         omega.innerHTML = xxx;
+         }
+     }
+//КОСТЫЛЬ НА КОСТЫЛЕ ИБО ВСЕ СРОЧНЕЕ СРОЧНОГО!!!!!
+     //ВСЁ ПЕРЕДЕЛАТЬ!!!!
+     for_delta.open('POST', 'ServletClassicalReport', true);
      for_delta.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
      for_delta.send("data_s=StandartChiefReport");
      console.log('return xxx: ' + xxx);
