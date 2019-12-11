@@ -1,106 +1,79 @@
 package server_unit;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.google.gson.Gson;
-
 import beans_unit.*;
 import recognition_and_initialization_unit.*;
 
+/**
+ * ServletStandartMode предназначен для:
+ * ...
+ * @author user
+ */
 @WebServlet("/ServletStandartMode")
 public class ServletStandartMode extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-		public ServletStandartMode() {
-			super();
-	    }
+	String addressSaga = "C:\\Users\\user\\eclipse-workspace\\Point_one(Web)\\saga.txt";
+	Day day;
 	
+	public ServletStandartMode() {
+		super();
+    }
+	
+	/**
+	 * doPost содержит 2 локических процесса
+	 * first: распознавание пользовательского текста с html-страницы
+	 * и формирование отчета за день (DayReport), с выводом его на html-страницу
+	 * second: формирование истории в json-формате
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("..servlet_standart_mode ...method post");
 		request.setCharacterEncoding("utf-8");
-
-		String web_text = request.getParameter("facture"); //change on facture!
-//		String date_one = request.getParameter("date_one");
-//		String date_two = request.getParameter("date_two");
-		String flag = request.getParameter("flag_today_data");
-		/*flag_today_data or (!) switch for <standart> and <report>*/
-//		System.out.println("one: " + date_one);
-//		System.out.println("two: " + date_two);
-		System.out.println("flag: " + flag);
-		
 		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");
-/*block of the creating necessary objects for work,
-  now it is three objects: Day, SortDay and Saga */
-		Day day = new Day();
-		SortDay sort_day = new SortDay();
-		Saga saga = new Saga("C:\\Users\\user\\eclipse-workspace\\Point_one(Web)\\saga.txt");
-		
-		new Recognize(web_text, day);		 
-		new DeepRecognize(day, sort_day);
-		
-		System.out.println("lenght of array<Day>: " + saga.getSaga().length);
-//..creating necessary object for analizis
-//		ArrayList<beans_unit.Day> day_list = new ArrayList<beans_unit.Day>();
-//			for(int i = 0; i < saga.getSaga().length; i++) {
-//				day_list.add(saga.getSaga()[i]);
-//			}
-//..analisis
-//		TimeManagment tm = new TimeManagment();
-//		ArrayList<Day> final_list = (ArrayList<Day>) tm.getInterval(date_one, date_two, day_list);//!INTERVAL
-//		System.out.println(final_list.size());
-//		Buffer.setFinal_list(final_list);
-		
-//		SortDay sort_day_two = new SortDay();
-//		Day day_two = new Day();
-//			for(Day item : final_list){
-//				System.out.print(item.getDate() + " ");
-//				new Recognize(item);//where facture??
-//				new DeepRecognize(item, sort_day_two);
-//..analisis 15-11-19
-//				SortDay for_intermediate_analisis = new SortDay();
-//				new DeepRecognize(item, for_intermediate_analisis);
-//				System.out.println(for_intermediate_analisis.getListNicom() + " total: " + for_intermediate_analisis.getNicom());
-//			}
-//..here we must get interval_array<Day>
-	
-//..new approach by Yong: object of sort_day --convert--> to json
-		Gson json = new Gson();
-		
-		String json_day = "";
-		String json_sort_day = "";
-//..the code for toggle checkbox at html, <Standart> or <Report> 
+		response.setCharacterEncoding("utf-8");	
+		initDay(request.getParameter("facture"));	//..first logical process
+		response.getWriter().write(getDayReport());
 
-			json_day = json.toJson(day);
-			json_sort_day = json.toJson(sort_day);
-			
-			
-////..end
-		String to_jscript = concatJson(json_day, json_sort_day);
-		response.getWriter().write(to_jscript);
-//..add to our history
-		saga.addToSaga(day);
-		
-//..modul PrintCashCheck
-		System.out.println("..modul PrintCashCheck <off>");
-		
-//for consol desing
-		System.out.println("..end servlet_standart_mode");
+		engageSaga();	//..second logical process
+		System.out.println("..modul PrintCashCheck <off>");	//..modul PrintCashCheck
+		System.out.println("..end servlet_standart_mode");	//..for consol desing
 		System.out.println();
 	}
-
-	private String concatJson(String json_one, String json_two) {
-		String result = json_one.substring(0, json_one.length() - 1) + "," 
-		+ json_two.substring(1, json_two.length());
-		
-	return result;
+	
+	private void initDay(String webText) throws IOException {
+		this.day = new Day();
+		new Recognize(webText, day);
 	}
 
+	private String getDayReport() throws IOException {
+		SortDay sort_day = new SortDay();		 
+		new DeepRecognize(day, sort_day);
+		
+//..new approach by Yong: object of sort_day --convert--> to json
+		Gson json = new Gson();
+		String json_day = "";
+		String json_sort_day = "";
+		json_day = json.toJson(day);
+		json_sort_day = json.toJson(sort_day);	
+//..end
+		String result = concatJson(json_day, json_sort_day);
+	return result;
+	}
+	
+	private void engageSaga() throws IOException {
+		Saga saga = new Saga(addressSaga);
+		saga.addToSaga(day);
+		System.out.println("lenght of array<Day>: " + saga.getSaga().length);
+	}
+	
+	private String concatJson(String json_one, String json_two) {
+		String result = json_one.substring(0, json_one.length() - 1) + "," 
+		+ json_two.substring(1, json_two.length());	
+	return result;
+	}
 }

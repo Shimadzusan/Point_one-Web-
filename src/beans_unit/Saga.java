@@ -13,6 +13,7 @@ import com.google.gson.JsonSyntaxException;
 
 public class Saga {
 	Day[] saga;
+	String addressSaga;
 	
 	public Saga() {
 	//..Saga должна сама себя инициализировать?? аргументы
@@ -22,6 +23,7 @@ public class Saga {
 	
 	public Saga(String address) {
 		initSaga(address);
+		this.addressSaga = address;
 	}
 	
 	public Day[] getSaga() {
@@ -51,7 +53,8 @@ public class Saga {
 		
 		try {
 			setSaga(gson.fromJson(new FileReader(address), Saga.class).getSaga());
-		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e1) {
+		}
+		catch (JsonSyntaxException | JsonIOException | FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
 		return true;
@@ -81,7 +84,7 @@ public class Saga {
 		Gson gson = new Gson();
 		String json = "{\"saga\":" + gson.toJson(this.saga) + "}";
 		
-		FileOutputStream fos = new FileOutputStream("C:\\Users\\user\\eclipse-workspace\\Point_one(Web)\\saga.txt");   
+		FileOutputStream fos = new FileOutputStream(addressSaga);   
 		byte[] buffer2 = json.getBytes();
 	        	fos.write(buffer2, 0, buffer2.length);
 	        	fos.close();
