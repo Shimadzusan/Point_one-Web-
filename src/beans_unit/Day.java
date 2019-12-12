@@ -9,13 +9,12 @@ import java.util.List;
 
 public class Day implements FrameDay {
 	String date; 
-	List<String> facture;
-	int begin_cash;
-	int end_cash;
-	int salary;
+	List<String> facture;	//..contains all deals for day
+	List<String> info;	//..contains supplements information
 		
 	public Day() {
-		facture = new ArrayList();
+		facture = new ArrayList<String>();
+		info = new ArrayList<String>();
 	}
 	    
 	public void setDate(String date) {
@@ -25,26 +24,10 @@ public class Day implements FrameDay {
 	public String getDate() {
 		return this.date;
 	}
-	    
-	public void setBeginCash(int begin_cash) {
-		this.begin_cash = begin_cash;
-	}
-	    
-	public int getBeginCash() {
-		return this.begin_cash;
-	}
-	    
-	public void setEndCash(int end_cash) {
-		this.end_cash = end_cash;
-	}
-	    
-	public int getEndCash() {
-		return this.end_cash;
-	}
-	    
+	       
 	public void setFacture(String list) {
 		facture.add(list);
-	        //this.facture = list;
+		//this.facture = list;
 	}
 	
 	public void setFacture(List<String> facture) {
@@ -54,12 +37,13 @@ public class Day implements FrameDay {
 	public List<String> getFacture() {
 		return this.facture;
 	}
-	    
-	public void setSalary(int salary) {
-		this.salary = salary;
+
+	public List<String> getInfo() {
+		return info;
 	}
-	    
-	public int getSalary() {
-		return this.salary;
-	}	
+
+	public void setInfo(List<String> info) {
+		this.info = info;
+	}
+	   	
 }

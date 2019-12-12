@@ -1,21 +1,36 @@
 package makiwara_unit;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class Launch_generic {
 
 	public static void main(String[] args) {
-		int type = 10;
-		D d = new D(type);
-		ArrayList<Integer> acc = new ArrayList<Integer>();
-		acc.add(200);
-		d.setCash_gain(acc);
-		System.out.println(d.getCash_gain());
 		
-		D<String> d2 = new D<String>("hundert");
-		ArrayList<String> acc2 = new ArrayList<String>();
-		acc2.add("hund");
-		d2.setCash_gain(acc2);
-		System.out.println(d2.getCash_gain());
+//..version_one
+		int type = 0;
+		D<Integer> d = new D<Integer>(type);
+		d.setFoto(250);
+		
+//..version_two
+		ArrayList<String> list = new ArrayList<String>();
+		D<ArrayList<String>> e = new D<ArrayList<String>>(list);
+		list.add("250");
+		list.add("250");
+		e.setFoto(list);
+//..recognition
+		new Reco(d);
+		
+//..reflection
+		Class abc = Nicom.class;
+		Class c = beans_unit.SortDay.class;
+		System.out.println(c);
+		Field[] s = c.getDeclaredFields();
+		System.out.println();
+		for(int i = 0; i < s.length; i++) {
+			System.out.println(s[i]);
+		}
+		
+		
 
 	}
 
@@ -23,31 +38,34 @@ public class Launch_generic {
 
 
 class D <Essence> {
-	String date;
-	String type_of_deal;
-	//ArrayList<String> cash_gain;
-	Essence type;
-	ArrayList<Essence> cash_gain;
+	String date = "";
+	Essence foto;
 	
 	D(Essence type){
-		
+		System.out.println(type.getClass());
+		this.foto = type;
+	}
+	
+	public Essence getFoto() {
+		return foto;
 	}
 
-	public String getType_of_deal() {
-		return type_of_deal;
-	}
-
-	public void setType_of_deal(String type_of_deal) {
-		this.type_of_deal = type_of_deal;
-	}
-
-	public ArrayList<Essence> getCash_gain() {
-		return cash_gain;
-	}
-
-	public void setCash_gain(ArrayList<Essence> cash_gain) {
-		this.cash_gain = cash_gain;
+	public void setFoto(Essence foto) {
+		this.foto = foto;
 	}
 
 }
 
+class Reco {
+	Reco(D d) {
+		System.out.println("reco: " + d.foto.getClass());
+	}
+	
+	public void setFoto(int i) {
+		
+	}
+	
+	public void setFoto(ArrayList<String> list) {
+			
+		}
+}

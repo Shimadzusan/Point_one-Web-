@@ -14,9 +14,10 @@ public class Recognize extends Head {
 	
 	String address = "";
 	String text = "";
-	Day day;		//..or FrameDay day;
-	List<String> day_facture;
-	String[] day_list;
+	FrameDay day;		//..or FrameDay day;
+	List<String> dayFacture;
+	List<String> daySuppInfo;
+	String[] dayList;
 	
 	public Recognize(Day day) {
 		this.day = day;
@@ -24,14 +25,16 @@ public class Recognize extends Head {
 //..how to realize two same constructor? with text and address
 	public Recognize(String text, FrameDay day) throws IOException {
 		//this.address = address;
-		this.day = (Day) day;
-		day_facture = new ArrayList();
+		this.day = day;
+		dayFacture = new ArrayList<String>();
+		daySuppInfo = new ArrayList<String>();
 		this.text = text;
-		day_init();
+		dayInit();
 		
-		day_facture = day.getFacture();
+		dayFacture = day.getFacture();
 	}
-	
+/*
+ * old method..	
 	String get_text() throws IOException {
 		FileInputStream fin = new FileInputStream(address);  
 	        byte[] buffer = new byte[fin.available()];
@@ -40,21 +43,23 @@ public class Recognize extends Head {
 	        		//System.out.println(s);
 	return s;
 	}
-
+*/
+	
 //begin day_init complex, this complex contains 3 methods
-	private void day_init() {
+	private void dayInit() {
 //***to parse the text
-		day_list = text.split("\\n"); //total notes for day (code 13 10 is new line(\\r\\n))
-			for(int i = 0; i < day_list.length; i++) {
-	        	sort_kind(day_list[i]);
+		dayList = text.split("\\n");	//total notes for day (code 13 10 is new line(\\r\\n))
+			for(int i = 0; i < dayList.length; i++) {
+	        	sortKind(dayList[i]);
 	        }
+		day.setInfo(daySuppInfo);
 	}
 
-	public void sort_kind(String element) {
+	public void sortKind(String element) {
 //cash
 		if(element.contains("касса")) {
-			if(element.contains("утро")) day.setBeginCash(get_number(element));
-			if(element.contains("вечер")) day.setEndCash(get_number(element));
+			if(element.contains("утро")) daySuppInfo.add(element);
+			if(element.contains("вечер")) daySuppInfo.add(element);
 				return;
 		}
 //date
@@ -64,22 +69,11 @@ public class Recognize extends Head {
 		}
 //salary
 		if(element.contains("зп")) {
-			day.setSalary(get_number(element));
+			daySuppInfo.add(element);;
 				return;
 		}			
 //facture_surface
 		day.setFacture(element);
 	}
 	
-	public int get_number(String text) {
-		char[] ch = text.toCharArray();
-		String number = "";
-			for(int i = 0; i < ch.length; i++) {
-				if(Character.isDigit(ch[i]))number += "" + ch[i];
-			}
-			
-			if(number.length() == 0)number = "0";
-			
-	return Integer.parseInt(number);
-	}
 }

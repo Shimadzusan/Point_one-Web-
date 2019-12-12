@@ -1,19 +1,15 @@
 package beans_unit;
 
+import java.util.List;
+
 public interface FrameDay extends Facturable{
 	 
     public void setDate(String date);
     public String getDate();
     
-    public void setBeginCash(int begin_cash);
-    public int getBeginCash();
-    
-    public void setEndCash(int end_cash);
-    public int getEndCash();
-    
     public void setFacture(String list);
-    //public List<String> getFacture();
+    //public List<String> getFacture();	//..in interface Facturable
     
-//    public void setSalary(int salary);
-//    public int getSalary();
+    public void setInfo(List<String> info);
+    public List<String> getInfo();
 }
