@@ -8,7 +8,7 @@ public class SortDay <Ge> {
 	sphera, spheraMinus, other, otherMinus;
 	String salary, beginCash, endCash;
 	
-	public SortDay(Ge type) {	//..для присваевания переменной <Ge> необходимого типа
+	public SortDay(Ge type) {	//..для присваивания переменной <Ge> необходимого типа
 		System.out.println(type.getClass());
 		this.foto = type;
 	}

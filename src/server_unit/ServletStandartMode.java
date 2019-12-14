@@ -53,29 +53,16 @@ public class ServletStandartMode extends HttpServlet {
 	}
 
 	private String getDayReport() throws IOException {
-//		SortDay sort_day = new SortDay();		 
-//		new DeepRecognize(day, sort_day);
-//..sort_day_x.................................................................
 		int something = 1;
-		SortDay<Integer> sd = new SortDay<Integer>(something);	//..creating an object
+		SortDay<Integer> sortDay = new SortDay<Integer>(something);	//..creating an object
 		
 //		ArrayList<String> sample = new ArrayList<String>();
 //		SortDay_x<ArrayList<String>> sd = new SortDay_x<ArrayList<String>>(sample);
 		
-		new DeepRecognize(sd, day);
+		new DeepRecognize(sortDay, day);
 		Gson newJson = new Gson();
-		String jsonDay = newJson.toJson(sd);
-//..end sort_day_x................................................................
-		
-//..new approach by Yong: object of sort_day --convert--> to json
-//		Gson json = new Gson();
-//		String json_day = "";
-//		String json_sort_day = "";
-//		json_day = json.toJson(day);
-//		json_sort_day = json.toJson(sort_day);	
-////..end
-//		String result = concatJson(json_day, json_sort_day);
-	return jsonDay;
+		String result = newJson.toJson(sortDay);
+	return result;
 	}
 	
 	private void engageSaga() throws IOException {
@@ -84,9 +71,4 @@ public class ServletStandartMode extends HttpServlet {
 		System.out.println("lenght of array<Day>: " + saga.getSaga().length);
 	}
 	
-	private String concatJson(String json_one, String json_two) {
-		String result = json_one.substring(0, json_one.length() - 1) + "," 
-		+ json_two.substring(1, json_two.length());	
-	return result;
-	}
 }
