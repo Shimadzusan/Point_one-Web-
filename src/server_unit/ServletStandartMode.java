@@ -1,6 +1,8 @@
 package server_unit;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,18 +53,29 @@ public class ServletStandartMode extends HttpServlet {
 	}
 
 	private String getDayReport() throws IOException {
-		SortDay sort_day = new SortDay();		 
-		new DeepRecognize(day, sort_day);
+//		SortDay sort_day = new SortDay();		 
+//		new DeepRecognize(day, sort_day);
+//..sort_day_x.................................................................
+		int something = 1;
+		SortDay<Integer> sd = new SortDay<Integer>(something);	//..creating an object
+		
+//		ArrayList<String> sample = new ArrayList<String>();
+//		SortDay_x<ArrayList<String>> sd = new SortDay_x<ArrayList<String>>(sample);
+		
+		new DeepRecognize(sd, day);
+		Gson newJson = new Gson();
+		String jsonDay = newJson.toJson(sd);
+//..end sort_day_x................................................................
 		
 //..new approach by Yong: object of sort_day --convert--> to json
-		Gson json = new Gson();
-		String json_day = "";
-		String json_sort_day = "";
-		json_day = json.toJson(day);
-		json_sort_day = json.toJson(sort_day);	
-//..end
-		String result = concatJson(json_day, json_sort_day);
-	return result;
+//		Gson json = new Gson();
+//		String json_day = "";
+//		String json_sort_day = "";
+//		json_day = json.toJson(day);
+//		json_sort_day = json.toJson(sort_day);	
+////..end
+//		String result = concatJson(json_day, json_sort_day);
+	return jsonDay;
 	}
 	
 	private void engageSaga() throws IOException {

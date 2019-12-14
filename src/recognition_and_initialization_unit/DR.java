@@ -12,9 +12,9 @@ import beans_unit.*;
  * @author user
  *
  */
-public class DeepRecognize {
+public class DR {
 	String totalFacture = "";
-	SortDay s_day;
+	SortDay_x s_day;
 	FrameDay day;
 	
 	ArrayList<String> foto = new ArrayList<String>();
@@ -33,7 +33,7 @@ public class DeepRecognize {
 	ArrayList<String> card = new ArrayList<String>();
 	ArrayList<String> income = new ArrayList<String>();
 	
-	public DeepRecognize(SortDay sd, FrameDay day) {	//..constructor only one type SortDay!
+	public DR(SortDay_x sd, FrameDay day) {	//..constructor only one type SortDay!
 		this.s_day = sd;
 		this.day = day;
 		

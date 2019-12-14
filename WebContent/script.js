@@ -42,25 +42,25 @@ function press_button(){                                        //method post
                 "</td>" + 
                 
                 "<td>" + 
-                "<br>" + Obj.begin_cash + "<br>" + Obj.end_cash +
+                "<br>" + Obj.beginCash + "<br>" + Obj.endCash +
                 "<br>&nbsp-//-" +
                 "<br>" + Obj.income +
                 "<br>" + Obj.payment +
                 "<p>" + 
-                "<br>" + Obj.sber +
+                "<br>" + Obj.card +
                 "<br>" + Obj.nicom +
                 "<br>" + Obj.pults +
                 "<br>" + Obj.foto +
                 "<br>" + Obj.copy +
                 "<br>" + Obj.print +
-                "<br>" + (Obj.income - Obj.foto - Obj.copy - Obj.print - Obj.pults - Obj.nicom) +
+                "<br>" + Obj.other +
                 "<br>" + (Obj.income - Obj.pults - Obj.nicom) +
                 "<p>" +
-                "<br>-" + Obj.nicom_minus +
-                "<br>-" + Obj.pults_minus +
-                "<br>-" + Obj.baget_minus +
-                "<br>-" + Obj.fotolab_minus +
-                "<br>-" + (Obj.payment - Obj.pults_minus - Obj.nicom_minus - Obj.baget_minus - Obj.fotolab_minus) +
+                "<br>-" + Obj.nicomMinus +
+                "<br>-" + Obj.pultsMinus +
+                "<br>-" + Obj.bagetMinus +
+                "<br>-" + Obj.fotolabMinus +
+                "<br>-" + (Obj.payment - Obj.pultsMinus - Obj.nicomMinus - Obj.bagetMinus - Obj.fotolabMinus) +
                 "<br>&nbsp" + 
                 "</td></tr></table>"
             }
