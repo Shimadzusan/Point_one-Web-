@@ -59,8 +59,9 @@ public class ServletClassicalReport extends HttpServlet {
 				+ "<td>расходы</td><td>итого</td><td>ником</td><td>пульты</td>"
 				+ "<td>всего</td><td>з\\п</td><td>касса утро</td><td>касса вечер</td></tr>";
 		for(int i = 0; i < day_interval.size(); i++) {
-			SortDay sort_day = new SortDay();
-			new DeepRecognize(day_interval.get(i), sort_day);//uses for extract "other"
+			int something = 0;
+			SortDay<Integer> sort_day = new SortDay<Integer>(something);
+			new DeepRecognize(sort_day, day_interval.get(i));//uses for extract "other"
 			
 //			html += "<tr><td>дата</td><td>фнд</td><td>копия</td><td>печать</td><td>багет</td>"
 //					+ "<td>фотолаб</td><td>сфера</td><td>другое</td><td>на карту</td>"
@@ -69,15 +70,15 @@ public class ServletClassicalReport extends HttpServlet {
 //..end tables head			
 			html += "<tr style=\"vertical-align: top\"><td>" + day_interval.get(i).getDate() + "</td>"
 					+ "<td>\t" + sort_day.getFoto() + "</td><td>\t" + sort_day.getCopy() + "</td>"
-					+ "<td>" + sort_day.getPrint() + "</td><td>" + sort_day.getBagetMinus() + "</td>"
-					+ "<td>" + sort_day.getFotolabMinus() + "</td><td>" + "*" + "</td>"
-					+ "<td>" + "*" + "</td>"
-					+ "<td>" + sort_day.getSber() + "</td>"
+					+ "<td>" + sort_day.getPrint() + "</td><td>" + sort_day.getBaget() + "</td>"
+					+ "<td>" + sort_day.getFotolab() + "</td><td>" + sort_day.getSphera() + "</td>"
+					+ "<td>" + sort_day.getOther() + "</td>"
+					+ "<td>" + sort_day.getCard() + "</td>"
 					+ "<td>" + sort_day.getPayment() + "</td>"
 					+ "<td>" + "*" + "</td>"
 					+ "<td>" + sort_day.getNicom() + "</td><td>" + sort_day.getPults() + "</td>"
-					+ "<td>" + "*" + "</td><td>" + day_interval.get(i).getSalary() + "</td>"
-					+ "<td>" + day_interval.get(i).getBeginCash() + "</td><td>" + day_interval.get(i).getEndCash() + "</td></tr>";
+					+ "<td>" + "*" + "</td><td>" + sort_day.getSalary() + "</td>"
+					+ "<td>" + sort_day.getBeginCash() + "</td><td>" + sort_day.getEndCash() + "</td></tr>";
 		}
 		
 		html += "</table></div>";

@@ -39,7 +39,7 @@ public class ServletReportMode extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		
 //..creating necessary object for analizis
-		Saga saga = new Saga("C:\\Users\\user\\eclipse-workspace\\Point_one(Web)\\saga.txt");
+		Saga saga = new Saga("D:\\saga.txt");
 		
 		System.out.println("lenght of array<Day>: " + saga.getSaga().length);
 		ArrayList<beans_unit.Day> day_list = new ArrayList<beans_unit.Day>();
@@ -55,8 +55,8 @@ public class ServletReportMode extends HttpServlet {
 //..deals analisis BEGIN <STANDART CHIEF REPORT>		
 		ArrayList<Day> day_interval = Buffer.getFinal_list();
 		ArrayList<Deal> deals = new ArrayList<Deal>();
-		new DealsRecognize(day_interval, deals, "фнд");
-		System.out.println("deals size: " + deals.size());
+//		new DealsRecognize(day_interval, deals, "фнд");
+//		System.out.println("deals size: " + deals.size());
 //..adaptize
 //		AdapterDeals adapter = new AdapterDeals(deals.get(2));
 //		System.out.println("adapter: " + adapter.getCash_gain());

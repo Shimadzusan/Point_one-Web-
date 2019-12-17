@@ -51,25 +51,26 @@ public class ServletStandartChiefReport extends HttpServlet {
 		String html = "<div style=\"overflow: auto; height: 350px\"><table style=\"width: 95%; font-size: 9pt\">";
 //..general cycle
 		for(int i = 0; i < day_interval.size(); i++) {
-			SortDay sort_day = new SortDay();
-			new DeepRecognize(day_interval.get(i), sort_day);//uses for extract "other"
+			ArrayList<String> something = new ArrayList<String>();
+			SortDay<ArrayList<String>> sort_day = new SortDay<ArrayList<String>>(something);
+			new DeepRecognize(sort_day, day_interval.get(i));//uses for extract "other"
 			
 			html += "<tr><td>дата</td><td>фнд</td><td>копия</td><td>печать</td><td>багет</td>"
 					+ "<td>фотолаб</td><td>сфера</td><td>другое</td><td>на карту</td><td>за услугу</td>"
 					+ "<td>расходы</td><td>категория</td><td>итого</td><td>ником</td><td>пульты</td>"
 					+ "<td>всего</td><td>з\\п</td><td>касса утро</td><td>касса вечер</td></tr>";
 //..end tables head			
-			html += "<tr style=\"vertical-align: top\"><td>" + day_interval.get(i).getDate() + "</td>"
-					+ "<td>\t" + getArray(i, "фнд") + "</td><td>\t" + getArray(i, "копия") + "</td>"
-					+ "<td>" + getArray(i, "печать") + "</td><td>" + getArray(i, "багет") + "</td>"
-					+ "<td>" + getArray(i, "фотолаб") + "</td><td>" + getArray(i, "сфера") + "</td>"
-					+ "<td>" + getArray(sort_day.getListOther()) + "</td>"
-					+ "<td>" + getCardData(day_interval.get(i)) + "</td>"
-					+ "<td>" + getExpenseData(day_interval.get(i)) + "</td>"
-					+ "<td>" + (sort_day.getIncome() - sort_day.getNicom() - sort_day.getPults()) + "</td>"
-					+ "<td>" + getArray(i, "ником") + "</td><td>" + getArray(i, "пульты") + "</td>"
-					+ "<td>" + sort_day.getIncome() + "</td><td>" + day_interval.get(i).getSalary() + "</td>"
-					+ "<td>" + day_interval.get(i).getBeginCash() + "</td><td>" + day_interval.get(i).getEndCash() + "</td></tr>";
+			html += "<tr style=\"vertical-align: top\"><td>" + sort_day.getDate() + "</td>"
+					+ "<td>\t" + getFormat(sort_day.getFoto()) + "</td><td>\t" + getFormat(sort_day.getCopy()) + "</td>"
+					+ "<td>" + getFormat(sort_day.getPrint()) + "</td><td>" + getFormat(sort_day.getBaget()) + "</td>"
+					+ "<td>" + getFormat(sort_day.getFotolab()) + "</td><td>" + getFormat(sort_day.getSphera()) + "</td>"
+					+ "<td>" + getFormat(sort_day.getOther()) + "</td>"
+					+ "<td>" + getCardData(sort_day.getCard()) + "</td>"
+					+ "<td>" + getExpenseData(sort_day.getPayment()) + "</td>"
+					+ "<td>" + (getSum(sort_day.getIncome()) - getSum(sort_day.getNicom()) - getSum(sort_day.getPults())) + "</td>"
+					+ "<td>" + getFormat(sort_day.getNicom()) + "</td><td>" + getFormat(sort_day.getPults()) + "</td>"
+					+ "<td>" + getSum(sort_day.getIncome()) + "</td><td>" + sort_day.getSalary() + "</td>"
+					+ "<td>" + sort_day.getBeginCash() + "</td><td>" + sort_day.getEndCash() + "</td></tr>";
 		}
 		
 		html += "</table></div>";
@@ -102,48 +103,37 @@ public class ServletStandartChiefReport extends HttpServlet {
 		return s;
 	}
 	
-	private String getCardData(Day day) {
-		List<String> facture = day.getFacture();
-		String data = "";
-//..for card
-		for(int i = 0; i < facture.size(); i++) {
-			String s = facture.get(i);
-			if(s.contains("сбер") || s.contains("тинькофф")  || s.contains("почта-банк") || s.contains("сбербанк") || s.contains("тинькоф")) {	
-				data += getNumber(s) + "<br>";
+	private String getCardData(ArrayList<String> data) {
+		String[] array;
+		String result = "";
+		
+			for(int i = 0; i < data.size(); i++) {
+				array = data.get(i).split(" ");
+				result += array[1] + "<br>";
 			}
-		}
-		data += "</td><td>";
-//..for service
-		for(int i = 0; i < facture.size(); i++) {
-			String s = facture.get(i);
-			if(s.contains("сбер") || s.contains("тинькофф")  || s.contains("почта-банк") || s.contains("сбербанк") || s.contains("тинькоф")) {
-				String[] operational = s.split(" ");
-				data += operational[0] + "<br>";
-			}
-		}
-		return data;
+			result += "</td><td>";
+			for(int i = 0; i < data.size(); i++) {
+				array = data.get(i).split(" ");
+				result += array[0] + "<br>";
+			}	
+	return result;
 	}
 	
-private String getExpenseData(Day day) {
-		List<String> facture = day.getFacture();
-		String data = "";
-//..for expense
-		for(int i = 0; i < facture.size(); i++) {
-			String s = facture.get(i);
-			if(s.contains("минус")) {	
-				data += getNumber(s) + "<br>";
-			}
+private String getExpenseData(ArrayList<String> data) {
+	String[] array;
+	String result = "";
+	
+		for(int i = 0; i < data.size(); i++) {
+			array = data.get(i).split(" ");
+			result += array[1] + "<br>";
 		}
-		data += "</td><td>";
-//..for service
-		for(int i = 0; i < facture.size(); i++) {
-			String s = facture.get(i);
-			if(s.contains("минус")) {
-				String[] operational = s.split(" ");
-				data += operational[0] + "<br>";
-			}
-		}
-		return data;
+		result += "</td><td>";
+		for(int i = 0; i < data.size(); i++) {
+			array = data.get(i).split(" ");
+			result += array[0] + "<br>";
+		}	
+
+		return result;
 	}
 	
 	
@@ -155,4 +145,32 @@ private String getExpenseData(Day day) {
 			}	
 	return Integer.parseInt(number);
 	}
+	
+	private String getFormat(ArrayList<String> data) {
+		String[] array;
+		String result = "";
+		try {//..???? cstl!!
+		if(data == null || data.size() == 0) return "0";
+		
+		else {
+			for(int i = 0; i < data.size(); i++) {
+				array = data.get(i).split(" ");
+				result += array[1] + "<br>";
+			}	
+	return result;
+		}
+		}
+		catch (ArrayIndexOutOfBoundsException e) {
+			return "e";
+		}
+	}
+	
+	private int getSum(List<String> list) {
+		int sum = 0;
+		for(int i = 0; i < list.size(); i++) {
+			sum += getNumber(list.get(i));
+		}
+		return sum;
+	}
+	
 }
