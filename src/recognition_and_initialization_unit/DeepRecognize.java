@@ -26,6 +26,8 @@ public class DeepRecognize {
 	ArrayList<String> pultsMinus = new ArrayList<String>();
 	ArrayList<String> fotolab = new ArrayList<String>();
 	ArrayList<String> fotolabMinus = new ArrayList<String>();
+	ArrayList<String> sphera = new ArrayList<String>();
+	ArrayList<String> spheraMinus = new ArrayList<String>();
 	ArrayList<String> baget = new ArrayList<String>();
 	ArrayList<String> bagetMinus = new ArrayList<String>();
 	ArrayList<String> other = new ArrayList<String>();
@@ -104,6 +106,16 @@ public class DeepRecognize {
 		else return false;
 	}
 	
+	public boolean extractSphera(String s) {
+		if(s.contains("сфера") && !s.contains("минус"))return true;
+		else return false;
+	}
+	
+	public boolean extractSpheraMinus(String s) {
+		if(s.contains("сфера") && s.contains("минус"))return true;
+		else return false;
+	}
+	
 	public boolean extractBaget(String s) {
 		if(s.contains("багет") && !s.contains("минус"))return true;
 		else return false;
@@ -150,6 +162,8 @@ public class DeepRecognize {
 		s_day.setPultsMinus(getSum(pultsMinus));
 		s_day.setFotolab(getSum(fotolab));
 		s_day.setFotolabMinus(getSum(fotolabMinus));
+		s_day.setSphera(getSum(sphera));
+		s_day.setSpheraMinus(getSum(spheraMinus));
 		s_day.setBaget(getSum(baget));
 		s_day.setBagetMinus(getSum(bagetMinus));
 		s_day.setOther(getSum(other));
@@ -174,6 +188,8 @@ public class DeepRecognize {
 			if(extractCard(element))card.add(element);
 			if(extractFotolab(element))fotolab.add(element);
 			if(extractFotolabMinus(element))fotolabMinus.add(element);
+			if(extractSphera(element))sphera.add(element);
+			if(extractSpheraMinus(element))spheraMinus.add(element);
 			if(extractBaget(element))baget.add(element);
 			if(extractBagetMinus(element))bagetMinus.add(element);
 			if(extractOther(element))other.add(element);
@@ -193,6 +209,8 @@ public class DeepRecognize {
 		s_day.setBagetMinus(bagetMinus);
 		s_day.setFotolab(fotolab);
 		s_day.setFotolabMinus(fotolabMinus);
+		s_day.setSphera(sphera);
+		s_day.setSpheraMinus(spheraMinus);
 		s_day.setOther(other);
 		s_day.setIncome(income);
 	}
@@ -224,7 +242,7 @@ public class DeepRecognize {
 			for(int i = 0; i < ch.length; i++) {
 				if(Character.isDigit(ch[i]))number += "" + ch[i];
 			}	
-	return Integer.parseInt(number);
+		return Integer.parseInt(number);
 	}
 
 }

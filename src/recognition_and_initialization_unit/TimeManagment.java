@@ -1,6 +1,5 @@
 package recognition_and_initialization_unit;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ public class TimeManagment {
 	String formated_date_one;
 	String formated_date_two;
 	boolean flag = false;
-	ArrayList<Day> final_day_list = new ArrayList();
+	ArrayList<Day> final_day_list = new ArrayList<Day>();
 	
 	public List<Day> getInterval(String date_one, String date_two, List<Day> day_array) {
 		this.begin_date_one = date_one;
@@ -57,7 +56,7 @@ public class TimeManagment {
 		String[] array = begin_format.split("\\.");
 		//..add: java.lang.ArrayIndexOutOfBoundsException try-catch
 		String java_date_format = array[2] + "-" + array[1] + "-" + array[0];
-	return java_date_format;
+		return java_date_format;
 	}
 	
 }

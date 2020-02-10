@@ -35,8 +35,7 @@ public class Saga {
 	}
 
 	public class Day extends beans_unit.Day  {
-		
-		
+
 	}
 
 	public Day convertDay(beans_unit.FrameDay day) {

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import beans_unit.*;
+import database_unit.DatabaseOne;
 import recognition_and_initialization_unit.*;
 
 /**
@@ -22,13 +23,14 @@ public class ServletStandartMode extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String addressSaga = "D:\\saga.txt";
 	FrameDay day;
+	SortDay generalEntity;
 	
 	public ServletStandartMode() {
 		super();
     }
 	
 	/**
-	 * doPost содержит 2 локических процесса
+	 * doPost содержит 2 логических процесса
 	 * first: распознавание пользовательского текста с html-страницы
 	 * и формирование отчета за день (DayReport), с выводом его на html-страницу
 	 * second: формирование истории в json-формате
@@ -42,7 +44,9 @@ public class ServletStandartMode extends HttpServlet {
 		response.getWriter().write(getDayReport());
 
 		engageSaga();	//..second logical process
-		System.out.println("..modul PrintCashCheck <off>");	//..modul PrintCashCheck
+		System.out.println("..module PrintCashCheck <off>");	//..module PrintCashCheck, third logical process
+		System.out.println("..module connectionDataBase");	//..fouth logical process
+		toDataBase();
 		System.out.println("..end servlet_standart_mode");	//..for consol desing
 		System.out.println();
 	}
@@ -55,20 +59,26 @@ public class ServletStandartMode extends HttpServlet {
 	private String getDayReport() throws IOException {
 		int something = 1;
 		SortDay<Integer> sortDay = new SortDay<Integer>(something);	//..creating an object
-		
+		generalEntity = sortDay;
 //		ArrayList<String> sample = new ArrayList<String>();
 //		SortDay_x<ArrayList<String>> sd = new SortDay_x<ArrayList<String>>(sample);
 		
 		new DeepRecognize(sortDay, day);
 		Gson newJson = new Gson();
 		String result = newJson.toJson(sortDay);
-	return result;
+		return result;
 	}
 	
 	private void engageSaga() throws IOException {
 		Saga saga = new Saga(addressSaga);
 		saga.addToSaga(day);
 		System.out.println("lenght of array<Day>: " + saga.getSaga().length);
+	}
+	
+	private void toDataBase() throws IOException {
+		System.out.println("..toDataBase ++	..new ParticularClass(oldApproach)");
+		DatabaseOne database = new DatabaseOne(generalEntity);
+		System.out.println(generalEntity.getDate());
 	}
 	
 }

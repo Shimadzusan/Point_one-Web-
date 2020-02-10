@@ -2,9 +2,14 @@ package beans_unit;
 
 import java.util.ArrayList;
 
+/**
+ * class Card предназначен для:
+ * ..формирования отчетности по онлайн-платежам, т.е. платежи перечисляемые на "карту"
+ * ..используется сервлетом ServletOnlineIncome
+ * @author user
+ */
 public class Card {
 	String date;
-	
 	ArrayList<String> sber;
 	ArrayList<String> tinkoff;
 	ArrayList<String> pochta_bank;

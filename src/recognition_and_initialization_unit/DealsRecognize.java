@@ -28,18 +28,15 @@ public class DealsRecognize {
 		this.deal_type = deal_type;
 		general_list = new ArrayList();
 		
-		extract_data();
-		
+		extract_data();	
 	}
+	
 //..for online_payment
 	public DealsRecognize(ArrayList<Day> day_interval, ArrayList<Card> object_for_card) {
 		this.day_interval = day_interval; 
 		this.object_for_card = object_for_card;
-		
 		general_list = new ArrayList();
-		
 		extract_data_two();
-		
 	}
 
 	private void extract_data() {
@@ -50,7 +47,6 @@ public class DealsRecognize {
 			init_deal();
 			general_list.clear();//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		}
-		
 	}
 
 	private void extract_data_two() {
@@ -113,7 +109,7 @@ public class DealsRecognize {
 				result.add(s);
 			}
 		}
-	return result;
+		return result;
 	}
 	private ArrayList<String> getTinkoff() {
 		ArrayList<String> result = new ArrayList<String>();
@@ -123,7 +119,7 @@ public class DealsRecognize {
 				result.add(s);
 			}
 		}
-	return result;
+		return result;
 	}
 	private ArrayList<String> getSber() {
 		ArrayList<String> result = new ArrayList<String>();
@@ -133,11 +129,11 @@ public class DealsRecognize {
 				result.add(s);
 			}
 		}
-	return result;
+		return result;
 	}
 	
 	private ArrayList<String> getExpense() {
-		ArrayList<String> result = new ArrayList();
+		ArrayList<String> result = new ArrayList<String>();
 			for(int i = 0; i < general_list.size(); i++) {
 				String s = general_list.get(i);
 				if(s.contains("минус")) {
@@ -148,18 +144,18 @@ public class DealsRecognize {
 	}
 
 	private ArrayList<String> getOnlineIcome() {
-		ArrayList<String> result = new ArrayList();
+		ArrayList<String> result = new ArrayList<String>();
 		for(int i = 0; i < general_list.size(); i++) {
 			String s = general_list.get(i);
 			if(s.contains("сбер") || s.contains("тинькофф")  || s.contains("почта-банк") || s.contains("сбербанк") || s.contains("тинькоф")) {
 				result.add(s);
 			}
 		}
-	return result;
+		return result;
 	}
 
 	private ArrayList<String> getCash() {
-		ArrayList<String> result = new ArrayList();
+		ArrayList<String> result = new ArrayList<String>();
 		for(int i = 0; i < general_list.size(); i++) {
 			String s = general_list.get(i);
 			if(!s.contains("сбер") && !s.contains("тинькофф")  && !s.contains("почта-банк") && !s.contains("сбербанк") 
@@ -167,7 +163,7 @@ public class DealsRecognize {
 				result.add(s);
 			}
 		}
-	return result;
+		return result;
 	}
 
 }

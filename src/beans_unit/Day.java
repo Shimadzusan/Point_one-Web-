@@ -3,10 +3,13 @@ package beans_unit;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
- *..description 
+/**
+ * class Day является центральным бином данного приложения, предназначен для:
+ * ..организации структуры данных, на данный момент это - три категории данных
+ * дата--фактура--дополнительная информация, variables: date--facture--info
+ * ..используется всюду
+ * @author user
  */
-
 public class Day implements FrameDay {
 	String date; 
 	List<String> facture;	//..contains all deals for day

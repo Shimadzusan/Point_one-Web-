@@ -2,13 +2,20 @@ package beans_unit;
 
 import java.util.ArrayList;
 
+/**
+ * class Deal предназначен для:
+ * ..формирование отчетности по только одной категории услуги или товара, список данных услуг и товаров
+ * определен в выпадающем списке html-страницы
+ * ..используется сервлетом ServletOneItem
+ * @author user
+ */
 public class Deal {
 	String date;
 	String type_of_deal;
 	
 	ArrayList<String> total_gain;
 	ArrayList<String> cash_gain;
-	ArrayList<String> online_income;//..sber, tinkoff, pochta-bank
+	ArrayList<String> online_income;	//..sber, tinkoff, pochta-bank
 		
 	ArrayList<String> expense;
 

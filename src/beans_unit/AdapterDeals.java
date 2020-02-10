@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class AdapterDeals {
 	ArrayList<Integer> total_gain;
 	ArrayList<Integer> cash_gain;
-	ArrayList<Integer> online_income;//..sber, tinkoff, pochta-bank
+	ArrayList<Integer> online_income;	//..sber, tinkoff, pochta-bank
 		
 	ArrayList<Integer> expense;
 	Deal deal;
@@ -51,16 +51,15 @@ public class AdapterDeals {
 			this.expense.add(get_number(this.deal.getExpense().get(i)));
 		}
 	}
+	
 	public ArrayList<Integer> getCash_gain() {
-		
-	return cash_gain;
+		return cash_gain;
 	}
 
 	private void setCashGain() {
 		for(int i = 0; i < deal.getCash_gain().size(); i++) {
 			this.cash_gain.add(get_number(this.deal.getCash_gain().get(i)));
 		}
-		
 	}
 	
 	private int get_number(String text) {
@@ -70,7 +69,7 @@ public class AdapterDeals {
 				if(Character.isDigit(ch[i]))number += "" + ch[i];
 			}
 			
-	return Integer.parseInt(number);
+		return Integer.parseInt(number);
 	}
 
 }
