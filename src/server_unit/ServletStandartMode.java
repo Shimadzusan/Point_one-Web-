@@ -77,8 +77,8 @@ public class ServletStandartMode extends HttpServlet {
 	
 	private void toDataBase() throws IOException {
 		System.out.println("..toDataBase ++	..new ParticularClass(oldApproach)");
-		DatabaseOne database = new DatabaseOne(generalEntity);
-		System.out.println(generalEntity.getDate());
+		SomeThread st = new SomeThread();
+		st.start();
 	}
 	
 }
