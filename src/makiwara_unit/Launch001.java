@@ -15,6 +15,8 @@ public class Launch001 {
 		map.put("print", 500);
 		
 		System.out.println(map.get("copy"));
+		System.out.println("check");
+		
 	}
 
 }
